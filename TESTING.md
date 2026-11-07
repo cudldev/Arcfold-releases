@@ -1,10 +1,16 @@
-# M2 physical-device smoke check
+# M3 physical-device smoke check
 
-Target: owner's Samsung Galaxy Z Fold 6. **Not yet tested.** Current candidate: **0.2.2-m2**, version code 5, shown as **Arcfold Dev**. Record its version plus Android/One UI build, navigation mode and font scale before testing. Start without making it default, then repeat the launch/return and fold journeys with Arcfold as Home.
+Current preview: **0.3.0-m3**, version code 6, shown as **Arcfold Dev**. Physical results for this version remain unrecorded. Record the phone, installed version, Android/One UI build, navigation mode and font scale. Start without making it default, then repeat with Arcfold as Home.
 
 | Journey | Expected result |
 | --- | --- |
 | Open Arcfold without making it default | Swipe up opens Library; down opens Search. Apps launch and return normally. Declining the default-Home dialog keeps Samsung Home |
+| Update an existing Arcfold Dev install | The unchanged development signer permits an in-place update. Saved apps, folders and pages remain; do not uninstall to bypass a signing mismatch |
+| Dismiss Library | Swipe down when the list was already at the top. Scrolling back to the top alone keeps it open; Back returns to the source page |
+| Hold an app with published shortcuts | While Arcfold is Home, add and launch a shortcut; move it and Undo |
+| Add widgets from Home Customize → Widgets | Try simple, configurable and scrollable widgets. Cancel setup once, finish it, then resize/move/restart. Native content and controls work |
+| Export and import | Library Options saves a personal layout through Android's picker. Cancel import preserves Home; confirmation replaces it; Undo restores the previous arrangement. Imported widgets require setup |
+| Optional work/Private Space | Work entries remain separate and pause/resume correctly when policy permits. Android Private Space appears in a separate Library container, excluded from ordinary Search/export; lock/hide removes its entries. Secure Folder support is not inferred |
 | Pin two apps; add a second page | Horizontal swipes stop at the ends. Search/Library returns to its source page; system Home returns to page one |
 | Search and launch | Results filter locally. Back hides the keyboard first, then returns. Returning from a launched app retains the query while the process lives |
 | Hold/drag one app onto another | A folder contains both apps. Rename survives app restart. Move a child out; the remaining child replaces the one-app folder |
@@ -16,4 +22,4 @@ Target: owner's Samsung Galaxy Z Fold 6. **Not yet tested.** Current candidate: 
 
 To return to Samsung Home: hold empty Home space → **Customize → Choose default launcher**. Android Settings remains available in the same menu.
 
-Record each journey as pass/fail/not tested, whether the phone was folded, and the shortest reproduction sequence for any failure. Five successful fold cycles are a smoke result, not the full adaptive gate. Emulator checks cannot establish physical gesture feel, TalkBack usability or fold continuity.
+Record each journey as pass/fail/not tested, whether the phone was folded, and the shortest reproduction sequence for any failure. Skip unavailable profile features and note why. Five successful fold cycles are a smoke result, not the full adaptive gate. Emulator checks cannot establish physical gesture feel, TalkBack usability or fold continuity. OEM restore/profile policies and performance/release qualification remain open. Theme and side docks come at M4/M5.

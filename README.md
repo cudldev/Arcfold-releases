@@ -4,11 +4,11 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.2.2-m2 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.2.2-m2/arcfold-dev.apk)**
+**[Download Arcfold 0.3.0-m3 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.3.0-m3/arcfold-dev.apk)**
 
-Android 10 or newer · Version code 5 · Opens as **Arcfold Dev**
+Android 17 first · Version code 6 · Opens as **Arcfold Dev**
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.2.2-m2) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Device testing checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.3.0-m3) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Device testing checklist](TESTING.md)
 
 Bookmark the **All releases** page for future tested APKs. Download `arcfold-dev.apk` from the release's Assets. GitHub's source ZIP contains this download page, not the Android app.
 
@@ -19,7 +19,9 @@ Bookmark the **All releases** page for future tested APKs. Download `arcfold-dev
 3. Swipe up for Library, down for Search, and sideways for pages. Hold empty Home space to edit; hold an app for its options.
 4. To switch back, hold empty Home space → **Customize → Choose default launcher**.
 
-This build fixes cramped Search/keyboard layouts, Back navigation and clipped Edit controls. Local Android 10 and Android 17 emulator checks passed, including UI, storage, crash recovery, cutout/large-text and native Home/reboot journeys. Physical Fold 6 and accessibility testing remain open. It is a development preview; widgets, shortcuts, complete Private Space handling and polished glass rendering are later work.
+M3 adds app shortcuts, native widgets, a separate Android Private Space container and manual layout export/import. Library can dismiss with a downward swipe when its list was already at the top. Set Arcfold as Home to use shortcuts, widgets and Private Space. Imported widgets require local setup; exports omit work/private entries.
+
+This preview focuses on Android 17. The APK declares Android 10 as its minimum; older-version qualification is deferred. Physical Fold 6, OEM restore/profile policies, TalkBack and performance/release gates remain open. Samsung Secure Folder support is not implied. Midnight Arc/Frost styling and side docks are coming at M4/M5.
 
 ## Updates and licensing
 
