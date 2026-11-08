@@ -1,14 +1,14 @@
 # Fold 6 preview check
 
-Current scoped preview: **0.5.4-security1 / code12**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
+Current scoped preview: **0.5.5-glass3 / code13**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
 
-The owner requested this preview to retest the earlier Play Protect warning. Keep Play Protect enabled and record any warning's exact wording; its cause is still unknown.
+The owner reports Play Protect blocks on earlier previews, including code12. Keep Play Protect enabled and record any warning's exact wording; its cause is still unknown.
 
 Record Android/One UI version, cover or unfolded screen, refresh rate and whether Reduced effects is enabled.
 
 1. Install the APK as an update to Arcfold Dev. Keep the existing install and saved layout.
 2. Compare Midnight Arc/Aurora and Frost/Pearl on cover and unfolded screens. Check text, glass edges, dock lighting, and Bottom/Left/Right placement. Imported wallpapers should stay selected; removing one returns to the theme wallpaper.
-3. Swipe up for Library and down for Search. Try List/Grid, long app names, ordinary list scrolling, edge alphabet scrolling and the last app at the bottom.
+3. Swipe up for Library and down for Search. Confirm the wallpaper remains clearly visible through real blur, without a forced navy/white wash. Check text and control outlines over a busy imported wallpaper too; settings should stay opaque. Try List/Grid, long app names, ordinary list scrolling, edge alphabet scrolling and the last app at the bottom.
 4. Create/edit a Library collection. Its membership should affect Library only; Search should still find apps outside it. Recent apps belong to Search only; try Clear and Hide.
 5. Search for an app, Wi-Fi, appearance and a published app shortcut when available. Back should first close the keyboard, then return to the source view. Device settings destinations depend on the phone's exported settings activities.
 6. Open folders, app menus and Library/Search pickers; switch Dock/Edit controls. Check glass entry/shape changes and rapid dismissal/reopening. Touch and gently tilt the phone to compare lighting; text/icons should stay sharp and cancelled presses must not commit actions. Try Reduced effects too.

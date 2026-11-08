@@ -4,13 +4,13 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.4-security1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.4-security1/arcfold-dev.apk)**
+**[Download Arcfold 0.5.5-glass3 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.5-glass3/arcfold-dev.apk)**
 
-Version code 12 · Opens as **Arcfold Dev** · Owner testing target: Galaxy Z Fold 6
+Version code 13 · Opens as **Arcfold Dev** · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.4-security1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.5-glass3) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
-**Warning-retest development preview:** published at the owner's request to test whether the earlier Play Protect warning recurs. Its cause remains unresolved; the shortcut-icon repair and local checks are not safety or Google clearance. Keep Play Protect enabled.
+**Early development preview:** the owner reports that Play Protect blocked earlier previews, including code12. Its cause remains unresolved; this visual update and passing functional checks are not safety or Google clearance. Keep Play Protect enabled.
 
 Download `arcfold-dev.apk` from Assets. GitHub's source ZIP contains this download page, not the Android app.
 
@@ -19,15 +19,15 @@ Download `arcfold-dev.apk` from Assets. GitHub's source ZIP contains this downlo
 3. Swipe up for Library, down for Search and sideways for Home pages. Hold empty space to edit; hold an app for its options.
 4. To return to your previous launcher, use **Customize → Choose default launcher**.
 
-Midnight Arc starts with Aurora artwork; Frost starts with Pearl. Each has phone and wide compositions, and imported wallpapers take precedence. Supported devices render reactive glass in the dock, folders and action menus; Reduced effects uses a simpler surface.
+Midnight Arc starts with generated Aurora artwork; Frost starts with generated Pearl artwork. Each has phone and wide compositions, and imported wallpapers take precedence. Library, Search, Dock, folders and action menus now transmit the blurred owned wallpaper without a forced navy/white panel tint. Floating surfaces retain refraction and reactive edges; text/icons use local contrast outlines. Settings, the Search input field and Reduced effects/resource fallbacks stay opaque. Glass does not sample app icons or live widget content behind it.
 
 Library and Search fill the screen. Library offers List/Grid, sorting, an edge alphabet index and editable Personal/Work/custom collections. These collections affect Library only and are separate from Android work profiles. Search includes local recent Arcfold launches, supported public device settings, Arcfold appearance/dock actions and available published app shortcuts. Recent history can be cleared or disabled.
 
 Home adapts to available window space and reported separating folds. Choose a bottom, left or right dock; its placement preference is currently shared across displays. Shortcuts, native widgets, separate Android Private Space and manual layout export/import are included. Set Arcfold as Home to use role-dependent features. Imports require local widget setup; exports omit work/private entries. Samsung Secure Folder support is not implied.
 
-The APK declares Android 10 as its minimum. Qualification focuses on Android 17 emulators; broader Android/OEM support is deferred. Physical Fold 6 appearance, tilt, Samsung keyboard behavior, accessibility and performance remain owner-test items. Code12 passed 35 platform cases and 174 ordinary app cases (138 passes, 36 explicit host/diagnostic skips), 14 native journey groups and eleven non-reboot lifecycle checks. M3, code10 and code11 basic/widget upgrades passed. Host-backed disposable baseline data, APKs, settings, users and grants were restored. Current hosted-device, unattended reboot and full milestone/beta qualification remain open.
+The APK declares Android 10 as its minimum. This exact code13 APK passed `check`, debug assembly and 18 focused Android 17/API37 cases for untinted transmission/blur, local text outlines, Library/pickers, menu motion/input, Home/Search and fallbacks. Both-theme native captures were inspected; disposable baseline data, APKs, settings, users and grants were restored. Earlier wider suites belong to their recorded builds. Physical Fold 6 appearance/cover-inner continuity, broad photo and large-text/focus readability, Samsung keyboard behavior, accessibility and release performance remain open. Hosted-device, unattended reboot and full milestone/beta qualification remain open.
 
-This update fixes shortcut-icon cache access after Home/shortcut authorization is revoked and updates the pinned host build tool to Gradle 9.8.2. It retains motion3's glass transitions and recent-launch repair. Other unreleased visual work is excluded. Earlier [motion3/code11](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.3-motion3), [glass2/code10](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.2-glass2) and [glass1/code9](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.1-glass1) remain immutable.
+This version retains the shortcut-icon authorization repair, existing glass transitions and recent-launch repair, and adds the latest nearby owned-background edge spill. Runtime dependency components remain unchanged. Earlier [security1/code12](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.4-security1), [motion3/code11](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.3-motion3), [glass2/code10](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.2-glass2) and [glass1/code9](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.1-glass1) remain immutable.
 
 ## Updates and licensing
 
