@@ -4,11 +4,11 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.1-glass1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.1-glass1/arcfold-dev.apk)**
+**[Download Arcfold 0.5.2-glass2 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.2-glass2/arcfold-dev.apk)**
 
-Version code 9 · Opens as **Arcfold Dev** · Owner testing target: Galaxy Z Fold 6
+Version code 10 · Opens as **Arcfold Dev** · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.1-glass1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.2-glass2) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
 Download `arcfold-dev.apk` from Assets. GitHub's source ZIP contains this download page, not the Android app.
 
@@ -23,7 +23,9 @@ Library and Search fill the screen. Library offers List/Grid, sorting, an edge a
 
 Home adapts to available window space and reported separating folds. Choose a bottom, left or right dock; its placement preference is currently shared across displays. Shortcuts, native widgets, separate Android Private Space and manual layout export/import are included. Set Arcfold as Home to use role-dependent features. Imports require local widget setup; exports omit work/private entries. Samsung Secure Folder support is not implied.
 
-The APK declares Android 10 as its minimum. Qualification focuses on Android 17 emulators; broader Android/OEM support is deferred. Physical Fold 6 appearance, tilt, Samsung keyboard behavior, accessibility and performance remain owner-test items. Exact checks and remaining limits accompany the release. The local emulator exited during unattended reboot; nine of twelve lifecycle checks passed, with reboot continuity and two unreached tail checks still open.
+The APK declares Android 10 as its minimum. Qualification focuses on Android 17 emulators; broader Android/OEM support is deferred. Physical Fold 6 appearance, tilt, Samsung keyboard behavior, accessibility and performance remain owner-test items. Exact checks and remaining limits accompany the release. Code10 passed the full local suites and eleven non-reboot lifecycle checks, including role loss and Settings exit. Unattended reboot remains open. Both hosted full-image checkpoints failed SystemUI startup before app tests despite passing builds; this preview relies on local/native qualification and does not claim a hosted-device pass.
+
+This update adds protection against replacing an existing Home when its WAL is unreadable; the glass design is unchanged. [Earlier glass1/code9](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.1-glass1) remains available.
 
 ## Updates and licensing
 

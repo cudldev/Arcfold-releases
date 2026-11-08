@@ -1,5 +1,7 @@
 # Fold 6 preview check
 
+Current scoped preview: **0.5.2-glass2 / code10**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
+
 Record Android/One UI version, cover or unfolded screen, refresh rate and whether Reduced effects is enabled.
 
 1. Install the APK as an update to Arcfold Dev. Keep the existing install and saved layout.
