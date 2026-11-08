@@ -1,6 +1,8 @@
 # Fold 6 preview check
 
-Current scoped preview: **0.5.3-motion3 / code11**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
+Current scoped preview: **0.5.4-security1 / code12**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
+
+The owner requested this preview to retest the earlier Play Protect warning. Keep Play Protect enabled and record any warning's exact wording; its cause is still unknown.
 
 Record Android/One UI version, cover or unfolded screen, refresh rate and whether Reduced effects is enabled.
 
