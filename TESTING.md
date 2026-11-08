@@ -1,6 +1,6 @@
 # Fold 6 preview check
 
-Current scoped preview: **0.5.2-glass2 / code10**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
+Current scoped preview: **0.5.3-motion3 / code11**. Hosted device/reboot/physical qualification remains open; see the release notes for exact local/native scope.
 
 Record Android/One UI version, cover or unfolded screen, refresh rate and whether Reduced effects is enabled.
 
@@ -9,7 +9,7 @@ Record Android/One UI version, cover or unfolded screen, refresh rate and whethe
 3. Swipe up for Library and down for Search. Try List/Grid, long app names, ordinary list scrolling, edge alphabet scrolling and the last app at the bottom.
 4. Create/edit a Library collection. Its membership should affect Library only; Search should still find apps outside it. Recent apps belong to Search only; try Clear and Hide.
 5. Search for an app, Wi-Fi, appearance and a published app shortcut when available. Back should first close the keyboard, then return to the source view. Device settings destinations depend on the phone's exported settings activities.
-6. Open a folder and an app menu. Touch and gently tilt the phone to compare glass lighting; check that controls remain usable and text/icons stay sharp. Try Reduced effects too.
+6. Open folders, app menus and Library/Search pickers; switch Dock/Edit controls. Check glass entry/shape changes and rapid dismissal/reopening. Touch and gently tilt the phone to compare lighting; text/icons should stay sharp and cancelled presses must not commit actions. Try Reduced effects too.
 7. Fold/unfold while on another Home page, while scrolling Library and with a folder open. Watch for overlaps, lost position, stuck touch input or misplaced popups.
 8. Check an existing widget and saved layout after reopening Arcfold and after a phone restart. Reboot continuity remains an open check in this preview. Note any crash or visible delay, plus the exact action and screen.
 
