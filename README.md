@@ -4,31 +4,29 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.0-m5 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.0-m5/arcfold-dev.apk)**
+**[Download Arcfold 0.5.1-glass1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.1-glass1/arcfold-dev.apk)**
 
-Android 17 first · Version code 8 · Opens as **Arcfold Dev**
+Version code 9 · Opens as **Arcfold Dev** · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.0-m5) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Device testing checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.1-glass1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
-Download `arcfold-dev.apk` from the release's Assets. GitHub's source ZIP contains this download page, not the Android app.
+Download `arcfold-dev.apk` from Assets. GitHub's source ZIP contains this download page, not the Android app.
 
-## Try it
+1. Download and open the APK on your phone. Allow installation for the app opening it if Android asks.
+2. Open **Arcfold Dev**. You can try Home before choosing it as your default launcher.
+3. Swipe up for Library, down for Search and sideways for Home pages. Hold empty space to edit; hold an app for its options.
+4. To return to your previous launcher, use **Customize → Choose default launcher**.
 
-1. Download and open the APK on your phone. If Android asks, allow installation for the app opening the file.
-2. Open **Arcfold Dev**. You can try it before choosing it as your default Home.
-3. Swipe up for Library, down for Search, and sideways for pages. Hold empty Home space to edit; hold an app for its options.
-4. To switch back, hold empty Home space → **Customize → Choose default launcher**.
+Midnight Arc starts with Aurora artwork; Frost starts with Pearl. Each has phone and wide compositions, and imported wallpapers take precedence. Supported devices render reactive glass in the dock, folders and action menus; Reduced effects uses a simpler surface.
 
-Home, Library and Search adapt to different window sizes and reported separating folds. Choose a bottom, left or right dock; folders, menus and settings fit within usable regions. The dock setting is currently **shared across displays**; independent cover/inner preferences await reliable display identification.
+Library and Search fill the screen. Library offers List/Grid, sorting, an edge alphabet index and editable Personal/Work/custom collections. These collections affect Library only and are separate from Android work profiles. Search includes local recent Arcfold launches, supported public device settings, Arcfold appearance/dock actions and available published app shortcuts. Recent history can be cleared or disabled.
 
-Choose Midnight Arc or Frost, reduced effects, and an optional owned photo backdrop. Supported devices use a shared blur; advanced refraction and tilt effects are not implemented. Visual and performance calibration remain open.
+Home adapts to available window space and reported separating folds. Choose a bottom, left or right dock; its placement preference is currently shared across displays. Shortcuts, native widgets, separate Android Private Space and manual layout export/import are included. Set Arcfold as Home to use role-dependent features. Imports require local widget setup; exports omit work/private entries. Samsung Secure Folder support is not implied.
 
-The preview also includes app shortcuts, native widgets, a separate Android Private Space container and manual layout export/import. Library can dismiss with a downward swipe when its list was already at the top. Set Arcfold as Home to use shortcuts, widgets and Private Space. Imported widgets require local setup; exports omit work/private entries.
-
-Local Android 17 emulator checks cover the development preview. The APK declares Android 10 as its minimum; older-version qualification is deferred. Physical Fold 6, OEM restore/profile policies, human accessibility, performance and production-release gates remain open. Samsung Secure Folder support is not implied.
+The APK declares Android 10 as its minimum. Qualification focuses on Android 17 emulators; broader Android/OEM support is deferred. Physical Fold 6 appearance, tilt, Samsung keyboard behavior, accessibility and performance remain owner-test items. Exact checks and remaining limits accompany the release. The local emulator exited during unattended reboot; nine of twelve lifecycle checks passed, with reboot continuity and two unreached tail checks still open.
 
 ## Updates and licensing
 
-These previews use a consistent development signing certificate so newer version codes can update the existing **Arcfold Dev** install. The package is `dev.arcfold.launcher.debug`; certificate SHA-256: `73e327dbf5bb2df83642fe563ef54e96547979e3250d1b1839292d3214e2d119`. Checksums and build metadata accompany each release.
+The development package is `dev.arcfold.launcher.debug`. The existing signing certificate permits updates over the published M3 preview without uninstalling its saved layout. Certificate SHA-256: `73e327dbf5bb2df83642fe563ef54e96547979e3250d1b1839292d3214e2d119`.
 
-This public repository contains download documentation and binary releases. Application source and development history remain in a separate private repository. Project-owned material uses [Apache-2.0](LICENSE); third-party notices accompany the APK. Publishing a preview does not claim production-release or Play qualification.
+This public repository contains download documentation and binary releases. Application source/history remain private. Project-owned material uses [Apache-2.0](LICENSE); third-party notices, checksums, build metadata and runtime inventory accompany the APK. This is a development preview; production signing, Play and stable-release qualification remain open.
