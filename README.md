@@ -4,13 +4,13 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.12-ux1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.12-ux1/arcfold-dev.apk)**
+**[Download Arcfold 0.5.13-home1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.13-home1/arcfold-dev.apk)**
 
-Version code 20 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
+Version code 21 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.12-ux1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.13-home1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
-**Early development preview:** Play Protect blocked earlier previews and the cause remains unresolved. Passing functional checks do not establish Google or safety clearance. Keep Play Protect enabled.
+**Early development preview.** On 2026-11-09 the owner reported that the permission change resolved the earlier Play Protect block; the exact permission and installed version were not specified. This is owner feedback, without independent Google classification clearance. Keep Play Protect enabled.
 
 Download **arcfold-dev.apk** from Assets. GitHub's source ZIP contains this download page, not the Android application.
 
@@ -21,13 +21,14 @@ Download **arcfold-dev.apk** from Assets. GitHub's source ZIP contains this down
 
 ### New in this preview
 
-- Changing or removing the background also updates Android Home wallpaper. A separately selected lock wallpaper is preserved; Android refusal is reported.
-- Search sits at the bottom and moves above the keyboard. Back hides the keyboard first, then returns to the source view.
-- Library/Search fades and native app handoff are softer. Back on Home stays on Home, and layout notices no longer replay on every return.
-- Refined Compact/Large/Full width clocks. Edit uses the same clock, grid and dock geometry as Home, with editing controls and drop targets.
-- Tap an empty Edit slot to select an app for that position.
-- Hold then drag a Library/Search app onto Home. Hover at an edge to change pages, or drop onto another app to create a folder. Cancel saves nothing; Undo restores the previous arrangement. Menu and keyboard routes remain available.
-- **Widget hosting is temporarily deferred.** Existing widget placement/journal data is retained and shown as generic removable placeholders. New widget discovery, setup and resize are unavailable in this preview.
+- Clean, Editorial, Stacked and Glass clock styles, existing Compact/Large/Full width sizes, alignment and ink choices. In Edit, drag the clock between safe top/bottom positions; cancel saves nothing.
+- Recognizable tabbed folders with a peek at up to four accessible apps. Choose a plain Folder, Work, Media or Games symbol per folder.
+- Hold and drag a folder app back onto Home. The app keeps its identity, cancellation saves nothing and Undo restores its previous arrangement. A folder containing only one remaining app collapses into that app.
+- Wallpaper reaches behind the status and navigation bars; content retains safe insets.
+- Cold Library/Search icons load lazily when visible and after scrolling or panel motion settles. Cached icons remain immediately reusable.
+- Library/Search keep a broad, smooth blend throughout the drag, including its final stretch.
+
+Background choices also update Android Home wallpaper. Bottom Search follows the keyboard; Edit preserves Home geometry. Library/Search app dragging, page-edge hover, folder drops and Undo remain available. **Widget hosting remains deferred:** existing placements stay as removable placeholders; new widget setup/resize is unavailable.
 
 Midnight Arc/Aurora and Frost/Pearl retain their generated phone/wide wallpapers. Imported images take precedence. Untinted shared-scene glass and sharp app artwork remain; settings stay opaque. Glass stays active under advisory power/heat/memory signals, with manual Reduce effects and actual graphics/lifecycle fallbacks. Appearance shows status and Retry.
 
@@ -35,9 +36,9 @@ Library offers List/Grid, sorting, an alphabet rail and editable collections. Co
 
 ### Tested scope
 
-The exact code20 APK passed check/debug assembly, **27 app and four platform cases on Android 17/API37**. Coverage includes native wallpaper picker/application and separate-lock preservation, keyboard/Back, stable Edit/Home geometry, exact-slot placement, drag/cancel/multitouch, cross-page and folder drops, Undo, dialog focus, clock persistence/large-text RTL fitting and native app launch/return. All saved shared-emulator baselines were restored; wallpaper writes used a separate fresh disposable emulator.
+The exact code21 APK passed check/debug assembly, **32 app and six platform cases on Android 17/API37**. Coverage includes clock styles, layout/persistence and cancelled positioning; folder previews, drag-out, cancellation and Undo; native system-bar wallpaper pixels; lazy icon gating, cancellation and cache reuse; GPU panel-edge blending; keyboard/Back, Home/Edit geometry, app placement and catalog gestures. All saved shared-emulator baselines were restored. No new permissions, runtime dependencies or wallpaper artwork.
 
-Physical Fold6 appearance, touch feel, frame pacing and folding, Android12/12L runtime, hosted/reboot and full beta gates remain open. Earlier releases, including [glass8/code18](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.10-glass8), remain immutable.
+Physical Fold6 appearance, touch feel, frame pacing and folding, Android12/12L runtime, hosted/reboot and full beta gates remain open. Earlier releases, including [0.5.12-ux1/code20](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.12-ux1), remain immutable.
 
 ## Updates and licensing
 
