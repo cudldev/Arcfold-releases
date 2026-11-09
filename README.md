@@ -4,39 +4,43 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.10-glass8 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.10-glass8/arcfold-dev.apk)**
+**[Download Arcfold 0.5.12-ux1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.12-ux1/arcfold-dev.apk)**
 
-Version code 18 · Opens as **Arcfold Dev** · Owner testing target: Galaxy Z Fold 6
+Version code 20 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.10-glass8) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.12-ux1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
-**Early development preview:** the owner reports that Play Protect blocked earlier previews, including code12. Its cause remains unresolved; this visual update and passing functional checks are not safety or Google clearance. Keep Play Protect enabled.
+**Early development preview:** Play Protect blocked earlier previews and the cause remains unresolved. Passing functional checks do not establish Google or safety clearance. Keep Play Protect enabled.
 
-Download `arcfold-dev.apk` from Assets. GitHub's source ZIP contains this download page, not the Android app.
+Download **arcfold-dev.apk** from Assets. GitHub's source ZIP contains this download page, not the Android application.
 
 1. Download and open the APK on your phone. Allow installation for the app opening it if Android asks.
-2. Open **Arcfold Dev**. You can try Home before choosing it as your default launcher.
-3. Swipe up for Library, down for Search and sideways for Home pages. Hold empty space to edit; hold an app for its options.
+2. Update the existing **Arcfold Dev** install to retain your saved layout. You can try Home before choosing it as the default launcher.
+3. Swipe up for Library, down for Search and sideways for Home pages. Hold empty space to edit.
 4. To return to your previous launcher, use **Customize → Choose default launcher**.
 
-Midnight Arc starts with generated Aurora artwork; Frost starts with generated Pearl artwork. Each has phone and wide compositions, and imported wallpapers take precedence. Library, Search, Dock, folders and action menus now transmit the blurred owned wallpaper without a forced navy/white panel tint. Floating surfaces retain refraction and reactive edges; text/icons use local contrast outlines. Settings, the Search input field and Reduced effects/resource fallbacks stay opaque. Glass does not sample app icons or live widget content behind it.
+### New in this preview
 
-Home stays composed behind menus, preserving its widgets and dock when Search opens the keyboard. Icons now have stronger untinted liquid-glass lenses that reflect the owned wallpaper, with crisp foreground logos, subtle press/tilt and slower reveals. The Home clock now sits directly on wallpaper: choose Compact, Large or Full width in Customize → Appearance. Clock size survives reopening, with width-fitted digits and matching date layouts. Layout and touch bounds remain stable; Reduce effects and system motion preferences remain available.
+- Changing or removing the background also updates Android Home wallpaper. A separately selected lock wallpaper is preserved; Android refusal is reported.
+- Search sits at the bottom and moves above the keyboard. Back hides the keyboard first, then returns to the source view.
+- Library/Search fades and native app handoff are softer. Back on Home stays on Home, and layout notices no longer replay on every return.
+- Refined Compact/Large/Full width clocks. Edit uses the same clock, grid and dock geometry as Home, with editing controls and drop targets.
+- Tap an empty Edit slot to select an app for that position.
+- Hold then drag a Library/Search app onto Home. Hover at an edge to change pages, or drop onto another app to create a folder. Cancel saves nothing; Undo restores the previous arrangement. Menu and keyboard routes remain available.
+- **Widget hosting is temporarily deferred.** Existing widget placement/journal data is retained and shown as generic removable placeholders. New widget discovery, setup and resize are unavailable in this preview.
 
-Glass stays active during advisory power-saving, heat and memory signals while Reduce effects is off. Appearance shows the state/reason and Retry glass. Library/Search follow your finger; hold midway, reverse to cancel, or release a longer pull/quick swipe to settle. Search now closes with an upward pull from its header, or from results already at the bottom. It returns to its source Home page or Library position. The moving panel edge blends softly with strong blur that relaxes as it opens fully. Search focuses and requests the keyboard after opening settles. Icons reveal after loading and entering the viewport. Automatic motion respects Reduce effects and disabled system animations. Settings stay opaque; no new permissions.
+Midnight Arc/Aurora and Frost/Pearl retain their generated phone/wide wallpapers. Imported images take precedence. Untinted shared-scene glass and sharp app artwork remain; settings stay opaque. Glass stays active under advisory power/heat/memory signals, with manual Reduce effects and actual graphics/lifecycle fallbacks. Appearance shows status and Retry.
 
-Library and Search fill the screen. Library offers List/Grid, sorting, an edge alphabet index and editable Personal/Work/custom collections. These collections affect Library only and are separate from Android work profiles. Search includes local recent Arcfold launches, supported public device settings, Arcfold appearance/dock actions and available published app shortcuts. Recent history can be cleared or disabled.
+Library offers List/Grid, sorting, an alphabet rail and editable collections. Collections filter Library only and are separate from Android work profiles. Search offers local recents, apps, supported device settings, Arcfold actions and available published shortcuts. Private Space stays separate. Home adapts to available space and reported separating folds; Bottom/Left/Right dock preferences are currently shared across displays. Manual layout transfer remains available. This preview excludes the separate experimental device/live-wallpaper mode.
 
-Home editing shows a lifted app/shortcut image and target footprint. Widgets use their full content area with no Arcfold provider-name bar, a Dock-style glass backing and floating options. In Edit, drag the corner grip of a resizable widget to preview its size, then release to commit; size presets remain available. The Home clock sits directly on the wallpaper, with Compact, Large and Full width choices. Third-party widget content may draw its own opaque background.
+### Tested scope
 
-Home adapts to available window space and reported separating folds. Choose a bottom, left or right dock; its placement preference is currently shared across displays. Shortcuts, native widgets, separate Android Private Space and manual layout export/import are included. Set Arcfold as Home to use role-dependent features. Imports require local widget setup; exports omit work/private entries. Samsung Secure Folder support is not implied.
+The exact code20 APK passed check/debug assembly, **27 app and four platform cases on Android 17/API37**. Coverage includes native wallpaper picker/application and separate-lock preservation, keyboard/Back, stable Edit/Home geometry, exact-slot placement, drag/cancel/multitouch, cross-page and folder drops, Undo, dialog focus, clock persistence/large-text RTL fitting and native app launch/return. All saved shared-emulator baselines were restored; wallpaper writes used a separate fresh disposable emulator.
 
-The APK requires Android 12/API 31 or newer. This exact code18 APK passed check/debug assembly, twenty-one focused app cases and five platform cases on Android 17/API37. Coverage includes clock picker/recreation, unchanged saved pins, narrow/large-text RTL bounds and preference isolation, retained Home/dock/real keyboard bounds, one native widget view across menus, shared GPU icon optics and sharp foreground exclusion, tap/cancel/reduced motion, all eight catalog gesture cases, scrolling and edge/flat-light/blur calibration. All saved emulator baselines were restored. Fold6 appearance/frame pacing, Android12/12L runtime, hosted/reboot/full milestone and beta gates remain open.
-
-This version retains the shortcut-icon authorization repair, existing glass transitions and recent-launch repair, and adds the latest nearby owned-background edge spill. Runtime dependency components remain unchanged. Earlier [glass6/code16](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.8-glass6), [glass5/code15](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.7-glass5), [glass4/code14](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.6-glass4), [glass3/code13](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.5-glass3), [security1/code12](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.4-security1), [motion3/code11](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.3-motion3), [glass2/code10](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.2-glass2) and [glass1/code9](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.1-glass1) remain immutable.
+Physical Fold6 appearance, touch feel, frame pacing and folding, Android12/12L runtime, hosted/reboot and full beta gates remain open. Earlier releases, including [glass8/code18](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.10-glass8), remain immutable.
 
 ## Updates and licensing
 
-The development package is `dev.arcfold.launcher.debug`. The existing signing certificate permits updates over the published M3 preview without uninstalling its saved layout. Certificate SHA-256: `73e327dbf5bb2df83642fe563ef54e96547979e3250d1b1839292d3214e2d119`.
+Package: **dev.arcfold.launcher.debug**. The retained development signer permits updates without uninstalling your saved layout. Certificate SHA-256: 73e327dbf5bb2df83642fe563ef54e96547979e3250d1b1839292d3214e2d119.
 
-This public repository contains download documentation and binary releases. Application source/history remain private. Project-owned material uses [Apache-2.0](LICENSE); third-party notices, checksums, build metadata and runtime inventory accompany the APK. This is a development preview; production signing, Play and stable-release qualification remain open.
+This public repository contains download documentation and binary releases. Application source/history remain private. Project-owned material uses [Apache-2.0](LICENSE); third-party notices, checksums, build metadata and the runtime inventory accompany the APK. Production signing, Play and stable-release qualification remain open.
