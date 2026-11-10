@@ -4,11 +4,11 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.13-home1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.13-home1/arcfold-dev.apk)**
+**[Download Arcfold 0.5.14-ux2 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.14-ux2/arcfold-dev.apk)**
 
-Version code 21 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
+Version code 22 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.13-home1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.14-ux2) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
 **Early development preview.** On 2026-11-09 the owner reported that the permission change resolved the earlier Play Protect block; the exact permission and installed version were not specified. This is owner feedback, without independent Google classification clearance. Keep Play Protect enabled.
 
@@ -21,12 +21,11 @@ Download **arcfold-dev.apk** from Assets. GitHub's source ZIP contains this down
 
 ### New in this preview
 
-- Clean, Editorial, Stacked and Glass clock styles, existing Compact/Large/Full width sizes, alignment and ink choices. In Edit, drag the clock between safe top/bottom positions; cancel saves nothing.
-- Recognizable tabbed folders with a peek at up to four accessible apps. Choose a plain Folder, Work, Media or Games symbol per folder.
-- Hold and drag a folder app back onto Home. The app keeps its identity, cancellation saves nothing and Undo restores its previous arrangement. A folder containing only one remaining app collapses into that app.
-- Wallpaper reaches behind the status and navigation bars; content retains safe insets.
-- Cold Library/Search icons load lazily when visible and after scrolling or panel motion settles. Cached icons remain immediately reusable.
-- Library/Search keep a broad, smooth blend throughout the drag, including its final stretch.
+- Short Search results sit closer to the bottom input while keeping their reading order. Clear a query without losing focus; matching app/action title text is emphasized.
+- Appearance has direct Wallpaper, Clock, Theme and Effects sections, with clock/wallpaper samples, style thumbnails and Back navigation within settings.
+- Edit shows clearer add/move/folder targets. Undo remains available from Home options after its message closes.
+- Library identifies the selected list separately from the Android profile. Empty lists offer **Show all apps**, preserving the selected profile; Search stays independent of list filters.
+- Large-text Search retains full-height controls in short windows. The single-profile label stays in Library.
 
 Background choices also update Android Home wallpaper. Bottom Search follows the keyboard; Edit preserves Home geometry. Library/Search app dragging, page-edge hover, folder drops and Undo remain available. **Widget hosting remains deferred:** existing placements stay as removable placeholders; new widget setup/resize is unavailable.
 
@@ -36,9 +35,9 @@ Library offers List/Grid, sorting, an alphabet rail and editable collections. Co
 
 ### Tested scope
 
-The exact code21 APK passed check/debug assembly, **32 app and six platform cases on Android 17/API37**. Coverage includes clock styles, layout/persistence and cancelled positioning; folder previews, drag-out, cancellation and Undo; native system-bar wallpaper pixels; lazy icon gating, cancellation and cache reuse; GPU panel-edge blending; keyboard/Back, Home/Edit geometry, app placement and catalog gestures. All saved shared-emulator baselines were restored. No new permissions, runtime dependencies or wallpaper artwork.
+The exact code22 APK passed check/debug assembly, **32 targeted app and six platform cases on Android 17/API37**. Coverage includes short-window/200%-text Search, result reach and clearing, section Back, clock preferences, graphics-status recovery, empty-list escape in ordinary and separating layouts, Home/Edit geometry, native IME/Back, drag cancellation/folder drops/Undo, Library scrolling and launch/return history. Recorded launcher data, APKs, Home and settings baselines were restored. No new permissions, runtime dependencies or wallpaper artwork.
 
-Physical Fold6 appearance, touch feel, frame pacing and folding, Android12/12L runtime, hosted/reboot and full beta gates remain open. Earlier releases, including [0.5.12-ux1/code20](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.12-ux1), remain immutable.
+Physical Fold6 readability, reach, touch feel, frame pacing, refresh-rate switching and folding, Android12/12L runtime, hosted/reboot and full beta gates remain open. Refresh rate follows Android/Compose; this preview adds no explicit rate votes. Releases contains the current development preview; superseded release builds were removed at the owner's request.
 
 ## Updates and licensing
 
