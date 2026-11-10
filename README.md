@@ -4,11 +4,11 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.16-miku1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.16-miku1/arcfold-dev.apk)**
+**[Download Arcfold 0.5.17-miku2 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.17-miku2/arcfold-dev.apk)**
 
-Version code 24 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
+Version code 25 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.16-miku1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.17-miku2) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
 **Early development preview.** On 2026-11-09 the owner reported that the permission change resolved the earlier Play Protect block; the exact permission and installed version were not specified. This is owner feedback, without independent Google classification clearance. Keep Play Protect enabled.
 
@@ -21,15 +21,14 @@ Download **arcfold-dev.apk** from Assets. GitHub's source ZIP contains this down
 
 ### New in this preview
 
-- **Miku · Halo**, an optional bundled preset: infinitely scrolling, tilted Home half-halo for your chosen apps/folders/shortcuts, with remembered item and fractional position. Library keeps a normal grid.
-- Transparent soap-film bubbles with iridescent rims and names attached to their lower edge. Music moves the decorative film while artwork, names and touch bounds stay fixed.
-- Procedural SDF teal ribbons with soft volume, luminous crests and slow flow, plus sparse GPU particles. No character artwork is bundled.
-- A center clock disc with small ambient ticks and a long radial spectrum during supported media playback.
-- Halo Edit and Library drag previews preserve geometry, existing placement/profile checks, cancellation, one commit and Undo.
+- Wider **pearly bubble rims**, brighter mint/pink/violet/champagne highlights, soft white reflections and stronger clear refraction.
+- The clock hub uses the matching glass. Attached names have softer backing over the owned scene; imported images and Reduce effects retain stronger backing.
+- Decorative interference drifts slowly while artwork, names and touch targets stay fixed.
+- The existing optional Miku preset retains its persistent infinite Home half-halo, normal Library grid, SDF ribbons/particles and opt-in output music visualization.
 
 Choose **Appearance → Theme → Miku · Halo**. Under **Effects**, **React to music** is off by default. It requests `RECORD_AUDIO`; normal `MODIFY_AUDIO_SETTINGS` is also declared for output-mix FFT. No microphone source, AudioRecord, saved audio, metadata collection, network or background service is used. Denied/unavailable output leaves ambient effects. Player/OEM compatibility varies; videos and games using media output may also drive it.
 
-[Actual Home screenshot](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.16-miku1/miku-halo-home.png) · [Music screenshot](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.16-miku1/miku-halo-music.png)
+[Actual Home screenshot](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.17-miku2/miku-halo-home.png) · [Library screenshot](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.17-miku2/miku-halo-library.png) · [Music screenshot](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.17-miku2/miku-halo-music.png)
 
 Background choices also update Android Home wallpaper. Bottom Search follows the keyboard; Edit preserves Home geometry. Library/Search app dragging, page-edge hover, folder drops and Undo remain available. **Widget hosting remains deferred:** existing placements stay as removable placeholders; new widget setup/resize is unavailable.
 
@@ -39,11 +38,11 @@ Library offers List/Grid, sorting, an alphabet rail and editable collections. Co
 
 ### Tested scope
 
-The exact code24 APK passed check/debug assembly, **51 model tests and 23 targeted app +8 platform cases on Android 17/API37**. Coverage includes GPU SDF compilation/visible crests/phase evolution/loop continuity, actual output audio, stable names/hit bounds during music, halo wrap/recreation/process death, real launch/return, empty/missing/single items, Edit/drag/cancellation/Undo, ordinary folder moves and Search/IME/focus. Recorded data, APK, Home/display/settings/widget/user/audio baselines were restored. Retained signer, expected audio permission additions, unchanged native/font/artwork bytes and 16 KiB ZIP alignment were verified. No rebuild followed qualification.
+The exact code25 APK passed check/debug assembly, **51 model test outputs and 11 targeted app +8 unique platform cases on Android 17/API37**. Coverage includes native Home/Library/Edit/music presentation, stable names and hit targets during music, Search/IME/native Back, launch/return, halo scroll/recreation, empty/missing/single items, Edit geometry, drag cancellation, one commit and Undo. Recorded emulator data, APK, Home/display/settings/boot/widget/user/audio baselines were restored. Retained signer, unchanged permissions/native/font/artwork payloads and 16 KiB ZIP alignment were verified. No rebuild followed qualification.
 
 Runtime library dependencies are unchanged. Open font assets and OFL-1.1 notices remain bundled. API31–32, Reduce effects and shader failures retain the simpler non-AGSL background fallback. The new preset's native Home wallpaper mutation still needs a fresh wallpaper emulator or physical check; feature tests set theme preferences directly.
 
-Physical Fold6 glass appearance, readability, interaction feel, frame pacing, refresh-rate switching and folding; Android12/12L runtime; hosted/reboot and full beta gates remain open. Refresh rate follows Android/Compose. The previous code23 preview remains available. Main integration and the new preset's native appearance acceptance remain open.
+Physical Fold6 glass appearance, readability, interaction feel, frame pacing, refresh-rate switching and folding; Android12/12L runtime; hosted/reboot and full beta gates remain open. Refresh rate follows Android/Compose. Previous development previews remain available. Main integration and the new preset's native appearance acceptance remain open.
 
 ## Updates and licensing
 

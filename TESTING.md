@@ -1,6 +1,6 @@
 # Fold 6 preview check
 
-Current scoped preview: **0.5.16-miku1 / code24**. Physical and wider qualification remain open.
+Current scoped preview: **0.5.17-miku2 / code25**. Physical and wider qualification remain open.
 
 Keep Play Protect enabled. Owner reports the permission change resolved earlier blocking; exact permission/version unspecified, without independent Google classification clearance. Record Android/One UI version, cover/unfolded display, refresh rate and Reduce effects state.
 
@@ -31,3 +31,7 @@ Select Appearance → Theme → Miku · Halo. Pin chosen apps/folders, scroll th
 Observe smooth teal SDF ribbons and sparse particles at idle. Enable React to music explicitly; test denial once, then supported media playback, pause/stop and app backgrounding. Names and touch targets should remain fixed while bubble film reacts. Record player, Android/One UI version and display. This output-visualization path uses no microphone source or saved audio. Try Reduce effects and Android Remove animations. Check appearance, battery/heat and frame pacing on the device; emulator rendering is not physical qualification.
 
 Check the new preset's Android Home wallpaper sync and separate Lock preservation on the phone. Switch to Midnight Arc/Frost to exercise the ordinary clock/grid controls above. Keep your existing install/layout; do not uninstall to bypass an update identity mismatch.
+
+## Miku bubble material follow-up
+
+Compare the wider pearl/rainbow rims, soft white reflection and clear center in Home, Library and the clock hub. Check small-bubble names, large text, both Fold6 displays, Edit geometry and Reduce effects. With music enabled, artwork, names and tap targets should stay fixed. Physical appearance and performance still need device review.
