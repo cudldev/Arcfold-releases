@@ -4,11 +4,11 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.14-ux2 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.14-ux2/arcfold-dev.apk)**
+**[Download Arcfold 0.5.15-motion1 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.15-motion1/arcfold-dev.apk)**
 
-Version code 22 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
+Version code 23 · Opens as **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.14-ux2) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.15-motion1) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold 6 checklist](TESTING.md)
 
 **Early development preview.** On 2026-11-09 the owner reported that the permission change resolved the earlier Play Protect block; the exact permission and installed version were not specified. This is owner feedback, without independent Google classification clearance. Keep Play Protect enabled.
 
@@ -21,11 +21,12 @@ Download **arcfold-dev.apk** from Assets. GitHub's source ZIP contains this down
 
 ### New in this preview
 
-- Short Search results sit closer to the bottom input while keeping their reading order. Clear a query without losing focus; matching app/action title text is emphasized.
-- Appearance has direct Wallpaper, Clock, Theme and Effects sections, with clock/wallpaper samples, style thumbnails and Back navigation within settings.
-- Edit shows clearer add/move/folder targets. Undo remains available from Home options after its message closes.
-- Library identifies the selected list separately from the Android profile. Empty lists offer **Show all apps**, preserving the selected profile; Search stays independent of list filters.
-- Large-text Search retains full-height controls in short windows. The single-profile label stays in Library.
+- Clock typefaces: **Rounded, Tall and Serif**, with weight controls. Choose **Digit finish → Glass** for wallpaper-filled glass digits, or Solid for regular ink.
+- Fine clock sizing and edge spacing. Home's grid adjusts around the top/bottom clock while saved pins stay intact; large text is fitted to safe bounds.
+- Smoother Home page, Library selection and Appearance section changes, eased icon presses and a scale/lift/fade when opening apps.
+- Search follows native keyboard animation frames with breathing room above the keyboard. Typing, focus and Back stay intact while the keyboard moves.
+- Folders show up to nine miniature app icons in a clean glass preview, without the folder symbol.
+- Library icon bubbles stay visible during a pull, including cold artwork loading. App images reveal separately; failed artwork retains an initial.
 
 Background choices also update Android Home wallpaper. Bottom Search follows the keyboard; Edit preserves Home geometry. Library/Search app dragging, page-edge hover, folder drops and Undo remain available. **Widget hosting remains deferred:** existing placements stay as removable placeholders; new widget setup/resize is unavailable.
 
@@ -35,9 +36,11 @@ Library offers List/Grid, sorting, an alphabet rail and editable collections. Co
 
 ### Tested scope
 
-The exact code22 APK passed check/debug assembly, **32 targeted app and six platform cases on Android 17/API37**. Coverage includes short-window/200%-text Search, result reach and clearing, section Back, clock preferences, graphics-status recovery, empty-list escape in ordinary and separating layouts, Home/Edit geometry, native IME/Back, drag cancellation/folder drops/Undo, Library scrolling and launch/return history. Recorded launcher data, APKs, Home and settings baselines were restored. No new permissions, runtime dependencies or wallpaper artwork.
+The exact code23 APK passed check/debug assembly, **57 targeted app and seven platform cases on Android 17/API37**. Coverage includes native intermediate keyboard frames, clock controls/recreation, fitted large-text/RTL fonts, grid reflow with unchanged pins, rendered glass glyphs and solid fallback, cold/held Library drags, motion/input, cancellation/Undo, list/profile boundaries and actual app launch/return. Recorded launcher data, APKs, Home and settings baselines were restored. Signer, font files/notices, unchanged permissions/native libraries and 16 KiB ZIP alignment were verified.
 
-Physical Fold6 readability, reach, touch feel, frame pacing, refresh-rate switching and folding, Android12/12L runtime, hosted/reboot and full beta gates remain open. Refresh rate follows Android/Compose; this preview adds no explicit rate votes. Releases contains the current development preview; superseded release builds were removed at the owner's request.
+No new permissions or runtime library dependencies. The APK bundles open font assets and their OFL-1.1 notices; Font licenses are available under Appearance → Clock and in the download notices.
+
+Physical Fold6 glass appearance, readability, interaction feel, frame pacing, refresh-rate switching and folding; Android12/12L runtime; hosted/reboot and full beta gates remain open. Refresh rate follows Android/Compose. Releases contains the current development preview; superseded builds are archived and removed at the owner's request.
 
 ## Updates and licensing
 

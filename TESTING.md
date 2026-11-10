@@ -1,6 +1,6 @@
 # Fold 6 preview check
 
-Current scoped preview: **0.5.14-ux2 / code22**. Physical and wider qualification remain open.
+Current scoped preview: **0.5.15-motion1 / code23**. Physical and wider qualification remain open.
 
 Keep Play Protect enabled. Owner reports the permission change resolved earlier blocking; exact permission/version unspecified, without independent Google classification clearance. Record Android/One UI version, cover/unfolded display, refresh rate and Reduce effects state.
 
@@ -17,3 +17,9 @@ Keep Play Protect enabled. Owner reports the permission change resolved earlier 
 
 Use Android's default Home setting to return to your previous launcher. These phone checks assess appearance, feel, Samsung keyboard behavior, accessibility and performance; emulator checks do not establish them.
 
+
+## Clock and motion follow-up
+
+On the Z Fold 6, try Rounded/Tall/Serif and weights in Customize → Appearance → Clock. Compare Solid and Glass digit finishes on your wallpaper. Adjust fine size, top/bottom placement, alignment and edge spacing; confirm the grid leaves room and saved pins/pages remain intact in Home and Edit. Try both displays and large text.
+
+Open Search and watch the input through keyboard opening/closing. Pull Library slowly and hold it: bubbles should stay present before artwork loads and through settling. Switch pages, Library lists/profiles/view modes and Appearance sections; try app opening/return and Android Remove animations/Arcfold Reduce effects. Report the installed version, OS/build and display used. These physical checks remain open.
