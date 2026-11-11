@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#eeeee7">
   <meta name="description" content="An interactive Miku watch face design study. Explore three directions, tune the finish, and compare active and always-on views.">
   <title>Miku / Watch face study</title>
-  <link rel="stylesheet" href="preview.css">
-  <script src="preview.js" defer></script>
+  <link rel="stylesheet" href="preview.css?v=longhair2">
+  <script src="preview.js?v=longhair2" defer></script>
 </head>
 <body>
   <header class="masthead"><a class="wordmark" href="#">MIKU<span class="mark">01</span><span class="wordmark-sub">ON YOUR WRIST.</span></a><span class="edition">WATCH FACE STUDY / 001</span></header>
@@ -21,16 +21,17 @@
           <div class="watch" id="watch"><div class="strap strap-top"></div><div class="strap strap-bottom"></div><div class="case"><i class="side-button side-top"></i><i class="side-button side-bottom"></i><div class="bezel"><div class="screen" id="face"></div></div></div></div>
         </div>
         <div class="mode-switch" role="group" aria-label="Display mode"><button data-mode="active" aria-pressed="true">☀ Active</button><button data-mode="ambient" aria-pressed="false">☾ Always-on</button></div>
-        <p class="stage-caption" id="stage-caption">A bold clock, a cheeky portrait, a little comic energy.</p>
+        <p class="stage-caption" id="stage-caption">The bold Comic clock, now with long-haired Miku.</p>
         <div class="stage-bottom"><span>ROUND DISPLAY · CONCEPT PREVIEW</span><span id="case-label">44 MM / ILLUSTRATIVE CASE</span></div>
       </section>
       <aside class="controls" aria-label="Design controls">
         <section class="control-section"><div class="section-title"><h2>01 / The direction</h2><span>TRY ALL THREE</span></div><div class="directions" role="group" aria-label="Face direction">
-          <button class="direction" data-layout="comic" aria-pressed="true"><span class="mini-face" id="mini-comic" aria-hidden="true"></span><span><strong>Comic</strong><small>Time with attitude.</small></span><span class="choice-dot"></span></button>
+          <button class="direction" data-layout="comic" aria-pressed="true"><span class="mini-face" id="mini-comic" aria-hidden="true"></span><span><strong>Comic</strong><small>Selected · long-haired Miku.</small></span><span class="choice-dot"></span></button>
           <button class="direction" data-layout="portrait" aria-pressed="false"><span class="mini-face" id="mini-portrait" aria-hidden="true"></span><span><strong>Portrait</strong><small>More Miku. Less noise.</small></span><span class="choice-dot"></span></button>
           <button class="direction" data-layout="dial" aria-pressed="false"><span class="mini-face" id="mini-dial" aria-hidden="true"></span><span><strong>Backstage</strong><small>A quieter analog moment.</small></span><span class="choice-dot"></span></button>
         </div></section>
         <section class="control-section"><div class="section-title"><h2>02 / The finish</h2></div>
+          <div class="control-row"><span id="character-label">Miku artwork</span><div class="segmented" role="group" aria-labelledby="character-label"><button data-character="original" aria-pressed="true">Original</button><button data-character="simple" aria-pressed="false">Simple</button></div></div>
           <div class="control-row"><span id="palette-label">Paper & ink</span><div class="segmented" role="group" aria-labelledby="palette-label"><button data-palette="paper" aria-pressed="true">Paper</button><button data-palette="night" aria-pressed="false">Night</button></div></div>
           <label class="slider-label" for="art">Miku size <output id="art-value" for="art">100%</output></label><input id="art" type="range" min="75" max="125" value="100" step="1">
           <label class="slider-label" for="texture">Comic texture <output id="texture-value" for="texture">25%</output></label><input id="texture" type="range" min="0" max="60" value="25" step="1">

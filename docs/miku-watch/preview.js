@@ -1,9 +1,9 @@
 (() => {
   'use strict';
-  const defaults = {layout:'comic',palette:'paper',mode:'active',art:100,texture:25,details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
-  const choices = {layout:['comic','portrait','dial'],palette:['paper','night'],mode:['active','ambient'],size:['40','44'],format:['12','24']};
+  const defaults = {layout:'comic',character:'original',palette:'paper',mode:'active',art:100,texture:25,details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
+  const choices = {layout:['comic','portrait','dial'],character:['original','simple'],palette:['paper','night'],mode:['active','ambient'],size:['40','44'],format:['12','24']};
   const names = {comic:'Comic',portrait:'Portrait',dial:'Backstage'};
-  const captions = {comic:'A bold clock, a cheeky portrait, a little comic energy.',portrait:'An oversized time header. Miku takes the lower stage.',dial:'A classic dial with a tiny backstage guest.'};
+  const captions = {comic:'The bold Comic clock, now with long-haired Miku.',portrait:'An oversized time header. Miku takes the lower stage.',dial:'A classic dial with a tiny backstage guest.'};
   const storageKey = 'miku-watch-study-001';
   const $ = id => document.getElementById(id);
   function sanitize(input) {
@@ -36,7 +36,8 @@
   }
   function artImage(file,x,y,width,height,anchorX,anchorY) {
     const scale = state.art / 100;
-    return `<g transform="translate(${anchorX} ${anchorY}) scale(${scale}) translate(${-anchorX} ${-anchorY})"><image href="assets/${file}.png" x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet"/></g>`;
+    const extension=file==='miku-long-hair-simple'?'svg':'png';
+    return `<g transform="translate(${anchorX} ${anchorY}) scale(${scale}) translate(${-anchorX} ${-anchorY})"><image href="assets/${file}.${extension}" x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet"/></g>`;
   }
   function slots(layout,ink,muted,interactive) {
     const attr = interactive ? 'class="face-slot" role="button" tabindex="0"' : '';
@@ -66,7 +67,7 @@
       content+=text(61,306,t.minute,147,ambient?ink:teal,`${timeFont} textLength="167" lengthAdjust="spacingAndGlyphs"`);
       if(state.format==='12') content+=text(62,104,t.period,13,muted,'font-weight="700"');
       if(!ambient) {
-        content+=artImage('miku-head',215,163,223,184,326,255);
+        content+=artImage(state.character==='simple'?'miku-long-hair-simple':'miku',201,144,252,200,327,244);
         content+=`<path d="M303 145 l12 -13 m-2 20 17 -4" fill="none" stroke="${pink}" stroke-width="4" stroke-linecap="round"/>`;
       } else content+=text(302,279,'01',42,teal,`${timeFont} text-anchor="middle"`);
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
@@ -74,7 +75,7 @@
       content+=text(225,96,`${t.day} ${t.date} ${t.month}`,15,muted,'text-anchor="middle" font-weight="700" letter-spacing="2"');
       content+=text(225,196,`${t.hour}:${t.minute}`,108,ink,`${timeFont} text-anchor="middle" textLength="318" lengthAdjust="spacingAndGlyphs"`);
       if(state.format==='12') content+=text(225,221,t.period,13,muted,'text-anchor="middle"');
-      if(!ambient) content+=artImage('miku',71,209,331,221,237,318);
+      if(!ambient) content+=artImage(state.character==='simple'?'miku-long-hair-simple':'miku',71,209,331,221,237,318);
       else content+=text(225,318,'MIKU / 01',19,teal,'text-anchor="middle" letter-spacing="3"');
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
     } else {
@@ -85,7 +86,7 @@
       content+=text(403,230,'3',13,muted,'text-anchor="middle" font-weight="700"');
       content+=text(225,401,'6',13,muted,'text-anchor="middle" font-weight="700"');
       content+=text(46,230,'9',13,muted,'text-anchor="middle" font-weight="700"');
-      if(!ambient) content+=artImage('miku-head',237,253,133,110,304,308);
+      if(!ambient) content+=artImage(state.character==='simple'?'miku-long-hair-simple':'miku-head',237,253,133,110,304,308);
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
       content+=`<line x1="225" y1="238" x2="225" y2="117" stroke="${ink}" stroke-width="12" stroke-linecap="round" transform="rotate(${(t.hour24%12)*30+t.min/2} 225 225)"/><line x1="225" y1="245" x2="225" y2="65" stroke="${teal}" stroke-width="7" stroke-linecap="round" transform="rotate(${t.min*6} 225 225)"/>`;
       if(state.seconds&&!ambient) content+=`<line x1="225" y1="253" x2="225" y2="49" stroke="${pink}" stroke-width="2.5" transform="rotate(${t.second*6} 225 225)"/>`;
@@ -102,7 +103,7 @@
     if(focused) $('face').querySelector(`[data-slot="${focused}"]`)?.focus({preventScroll:true});
   }
   function render(persist=true) {
-    for(const type of ['layout','palette','mode']) for(const button of document.querySelectorAll(`[data-${type}]`)) button.setAttribute('aria-pressed',String(button.dataset[type]===state[type]));
+    for(const type of ['layout','character','palette','mode']) for(const button of document.querySelectorAll(`[data-${type}]`)) button.setAttribute('aria-pressed',String(button.dataset[type]===state[type]));
     for(const key of ['art','texture','size','format']) $(key).value=state[key];
     for(const key of ['details','seconds','live']) $(key).checked=state[key];
     $('art-value').value=state.art+'%'; $('texture-value').value=state.texture+'%';
@@ -122,7 +123,7 @@
     toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),3500);
   }
   function change(key,value) { state=sanitize({...state,[key]:value});render(); }
-  for(const key of ['layout','palette','mode']) document.querySelectorAll(`[data-${key}]`).forEach(button=>button.addEventListener('click',()=>change(key,button.dataset[key])));
+  for(const key of ['layout','character','palette','mode']) document.querySelectorAll(`[data-${key}]`).forEach(button=>button.addEventListener('click',()=>change(key,button.dataset[key])));
   for(const key of ['art','texture']) $(key).addEventListener('input',event=>change(key,event.target.value));
   for(const key of ['size','format']) $(key).addEventListener('change',event=>change(key,event.target.value));
   for(const key of ['details','seconds','live']) $(key).addEventListener('change',event=>change(key,event.target.checked));
