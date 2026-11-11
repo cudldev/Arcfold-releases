@@ -142,6 +142,7 @@
     if(state.layout==='closeup') for(const id of ['art-controls','texture-controls']) $(id).hidden=true;
     $('preview-stage').dataset.family=miku?'miku':state.layout;
     $('stage-caption').textContent=state.mode==='ambient'?(state.aod>0?(miku?(state.aodstyle==='colour'?'Miku keeps her colours after hours.':'A quiet teal Miku stays with the clock.'):'The essential dial, with a little colour after hours.'):'A quieter clock. Accent intensity is off.'):captions[state.layout];
+    if(state.layout==='closeup'&&state.mode==='ambient'&&state.aod>0) $('stage-caption').textContent='A quiet outline of Miku on black, with the curved clock above.';
     // Texture/artwork settings remain adjustable for the active face while comparing ambient.
     updateFaces();
     if(persist) {try{localStorage.setItem(storageKey,JSON.stringify(state));}catch{}}

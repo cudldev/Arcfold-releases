@@ -38,7 +38,8 @@ globalThis.WatchStudies = (() => {
     };
     if(layout==='closeup') {
       bg=ambient?'#000':'#78adbd';
-      if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/soft-chibi-full-face-v1.png" x="0" y="0" width="450" height="450" preserveAspectRatio="xMidYMid slice" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;
+      const closeupArt=ambient?'soft-chibi-full-face-aod-outline-v1':'soft-chibi-full-face-v1';
+      if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/${closeupArt}.png" x="0" y="0" width="450" height="450" preserveAspectRatio="xMidYMid slice" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;
       const clockInk='#75b5ca';
       const clockFamily={fredoka:'Fredoka',nunito:'Nunito',baloo:'Baloo 2',barlow:'Barlow'}[state.font]||'Fredoka';
       const clockWeight=state.font==='nunito'?800:state.font==='fredoka'?600:700;
