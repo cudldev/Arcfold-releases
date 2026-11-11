@@ -8,6 +8,18 @@
 .app-slot>.app-card{width:calc(100% * var(--catalog-fit,1));transform-origin:50% 50%;backface-visibility:hidden;pointer-events:auto}
 .app-card:hover>img{transform:none}
 .app-slot>.app-card:active{filter:brightness(.99)}
+.is-refined.catalog-icons .app-card:before,.is-refined.catalog-icons .result:before,.is-refined.catalog-rows .app-card:before{display:none}
+.is-refined.catalog-icons .app-card,.is-refined.catalog-rows .app-card{gap:.65cqw}
+.is-refined.catalog-icons .app-label{font-weight:600;line-height:1.08;text-shadow:0 1px 0 #b6f2e4}
+.app-grid.has-shared-rows{display:flex;flex-direction:column}
+.catalog-row{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(var(--row-columns),minmax(0,1fr));align-items:stretch;width:calc(100% * var(--catalog-fit,1));transform-origin:50% 50%;backface-visibility:hidden}
+.catalog-row:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(170deg,var(--paper),color-mix(in srgb,var(--paper),#a6b994 calc(var(--gradient) * 100%)));clip-path:polygon(.9cqw 0,100% 0,100% calc(100% - .9cqw),calc(100% - .9cqw) 100%,0 100%,0 .9cqw);pointer-events:none}
+.sliders input:disabled{opacity:.35}
+.catalog-row>.app-card{width:100%;pointer-events:inherit;padding-left:.6cqw;padding-right:.6cqw}
+.is-refined.catalog-rows .catalog-row .app-label{font-weight:600;line-height:1.08}
+.is-refined.catalog-rows .result:before{opacity:.85}
+.grouping-control{margin-top:20px}.grouping-control .control-heading{margin-bottom:11px}
+.open-canvas.is-refined.catalog-icons .app-card,.open-canvas.is-refined.catalog-rows .app-card{gap:.5cqw}
 .search-field{box-shadow:inset 0 0 0 2px #236f63}.search-field:focus-within{outline:2px solid #236f63;outline-offset:-2px}
 
 /* The slab belongs to the whole Library canvas and reaches the top/status edge. */
@@ -32,6 +44,7 @@
 .open-canvas.is-refined .is-list .app-card{min-height:11cqw;height:auto;padding:1.5cqw 5cqw;gap:3cqw}
 
 @media(max-width:760px){
+  .grouping-control{grid-column:1/-1}.grouping-control .segmented button{min-height:40px}
   .comparison-control{grid-column:1/-1;margin-top:19px}
   .comparison-control .segmented button{min-height:40px}
   .sliders{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px}
@@ -41,4 +54,4 @@
   .sliders label:nth-of-type(4){grid-row:4;grid-column:2}.sliders #scroll-depth{grid-row:5;grid-column:2}
   .sliders label{margin-top:17px;font-size:11px}.sliders .reset{grid-column:1/-1;grid-row:6;justify-self:end;width:150px}
 }
-@media(prefers-reduced-motion:reduce){.app-slot>.app-card{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.app-slot>.app-card,.app-slot>.catalog-row{transform:none!important}}

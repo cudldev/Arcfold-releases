@@ -13,7 +13,7 @@ Version code 28 · **Arcfold Dev** · Android 12/API31 or newer · Owner testing
 Update the existing Arcfold Dev install to retain your saved layout. You can try Home before choosing it as the default launcher. GitHub's source ZIP contains these download pages; application source/history remain private.
 
 
-[Interactive Miku Library/Search design study](https://cudldev.github.io/Arcfold-releases/miku/?v=depth4) — compare Current / Proposed, with stronger whole-card depth, scroll-normal tilt, fading edges, 5% gradient and a 0-175% Scroll depth control and the full-width white comic header slab. This browser experiment is separate from the APK.
+[Interactive Miku Library/Search design study](https://cudldev.github.io/Arcfold-releases/miku/?v=group5) — compare Current / Proposed, with Icon + label / Shared rows, whole-row paper depth, fading edges, 5% gradient and the white comic header slab. This browser experiment is separate from the APK.
 
 ## Miku improvements
 

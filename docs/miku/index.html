@@ -7,11 +7,11 @@
   <title>Miku · Catalog study</title>
   <meta name="description" content="A Miku Library study with complete app cards scrolling along a curved 3D surface, plus the white comic header.">
   <link rel="icon" href="assets/study.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="preview.css?v=depth4">
-  <link rel="stylesheet" href="polish.css?v=depth4">
-  <script src="preview.js?v=depth4" defer></script>
+  <link rel="stylesheet" href="preview.css?v=group5">
+  <link rel="stylesheet" href="polish.css?v=group5">
+  <script src="preview.js?v=group5" defer></script>
 </head>
-<body class="is-refined">
+<body class="is-refined catalog-icons">
   <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
     <symbol id="back" viewBox="0 0 24 24"><path d="m13 5-7 7 7 7M6 12h16"/></symbol>
     <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
@@ -26,9 +26,9 @@
   </header>
   <main id="preview" class="studio">
     <aside class="studio-controls" aria-label="Preview controls">
-      <p class="eyebrow">LIBRARY / SEARCH · 04</p>
-      <h1>A deeper<br>curve.</h1>
-      <p class="intro">Whole cards roll toward you, tilt with the curve and fade at its edges.</p>
+      <p class="eyebrow">LIBRARY / SEARCH · 05</p>
+      <h1>Apps,<br>together.</h1>
+      <p class="intro">A lighter pairing. Compare open icons and labels with one shared paper slab per row.</p>
       <div class="control-group">
         <p class="control-heading">CANVAS</p>
         <div class="segmented" role="group" aria-label="Display size">
@@ -43,10 +43,17 @@
           <button id="refined-design" type="button" aria-pressed="true">Proposed</button>
         </div>
       </div>
+      <div class="grouping-control">
+        <p class="control-heading">APP GROUPING</p>
+        <div class="segmented" role="group" aria-label="App background style">
+          <button id="icons-style" type="button" aria-pressed="true">Icon + label</button>
+          <button id="rows-style" type="button" aria-pressed="false">Shared rows</button>
+        </div>
+      </div>
       <div class="control-group sliders">
         <p class="control-heading">THE FINISH</p>
-        <label for="card-width">Card backing <output id="card-width-value" for="card-width">82%</output></label>
-        <input id="card-width" type="range" min="66" max="100" value="82">
+        <label for="card-width">Paper · Current <output id="card-width-value" for="card-width">82%</output></label>
+        <input id="card-width" type="range" min="66" max="100" value="82" disabled>
         <label for="dot-strength">Halftone <output id="dot-strength-value" for="dot-strength">14%</output></label>
         <input id="dot-strength" type="range" min="0" max="28" value="14">
         <label for="gradient">Gradient <output id="gradient-value" for="gradient">5%</output></label>
@@ -55,7 +62,7 @@
         <input id="scroll-depth" type="range" min="0" max="175" step="5" value="110">
         <button id="reset" class="reset" type="button">Reset the study <span aria-hidden="true">↺</span></button>
       </div>
-      <div class="try-note"><span class="note-mark" aria-hidden="true">↗</span><p>Scroll inside Library. Bring even the first and last rows forward. Edge cards tilt with the curve and fade away; push Scroll depth up to 175% for a closer view.</p></div>
+      <div class="try-note"><span class="note-mark" aria-hidden="true">↗</span><p>Try Icon + label and Shared rows. Each app stays one clickable unit; shared paper tilts with the whole row. Scroll inside Library to feel the depth.</p></div>
       <p class="scope-note">Browser mockup · APK unchanged<br>Static wallpaper · no live app data</p>
     </aside>
     <div class="screens" id="screens">
