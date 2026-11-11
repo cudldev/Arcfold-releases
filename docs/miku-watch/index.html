@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eeeee7">
+  <meta name="description" content="An interactive Miku watch face design study. Explore three directions, tune the finish, and compare active and always-on views.">
+  <title>Miku / Watch face study</title>
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <header class="masthead"><a class="wordmark" href="#">MIKU<span class="mark">01</span><span class="wordmark-sub">ON YOUR WRIST.</span></a><span class="edition">WATCH FACE STUDY / 001</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">GALAXY WATCH 8 · DESIGN PLAYGROUND</p><h1>A little Miku.<br>A moment of <em>you.</em></h1></div><p class="intro-note">Big time. Tiny details. A familiar face.<br>Pick a direction, then make it yours.</p></section>
+    <div class="workspace">
+      <section class="stage" aria-label="Watch face preview">
+        <div class="stage-top"><span><i class="status-dot"></i><span id="stage-label">COMIC / ACTIVE</span></span><button class="text-button" id="bare" aria-pressed="false">Hide watch case ↗</button></div>
+        <div class="watch-space">
+          <span class="stage-type" aria-hidden="true">39</span>
+          <div class="watch" id="watch"><div class="strap strap-top"></div><div class="strap strap-bottom"></div><div class="case"><i class="side-button side-top"></i><i class="side-button side-bottom"></i><div class="bezel"><div class="screen" id="face"></div></div></div></div>
+        </div>
+        <div class="mode-switch" role="group" aria-label="Display mode"><button data-mode="active" aria-pressed="true">☀ Active</button><button data-mode="ambient" aria-pressed="false">☾ Always-on</button></div>
+        <p class="stage-caption" id="stage-caption">A bold clock, a cheeky portrait, a little comic energy.</p>
+        <div class="stage-bottom"><span>ROUND DISPLAY · CONCEPT PREVIEW</span><span id="case-label">44 MM / ILLUSTRATIVE CASE</span></div>
+      </section>
+      <aside class="controls" aria-label="Design controls">
+        <section class="control-section"><div class="section-title"><h2>01 / The direction</h2><span>TRY ALL THREE</span></div><div class="directions" role="group" aria-label="Face direction">
+          <button class="direction" data-layout="comic" aria-pressed="true"><span class="mini-face" id="mini-comic" aria-hidden="true"></span><span><strong>Comic</strong><small>Time with attitude.</small></span><span class="choice-dot"></span></button>
+          <button class="direction" data-layout="portrait" aria-pressed="false"><span class="mini-face" id="mini-portrait" aria-hidden="true"></span><span><strong>Portrait</strong><small>More Miku. Less noise.</small></span><span class="choice-dot"></span></button>
+          <button class="direction" data-layout="dial" aria-pressed="false"><span class="mini-face" id="mini-dial" aria-hidden="true"></span><span><strong>Backstage</strong><small>A quieter analog moment.</small></span><span class="choice-dot"></span></button>
+        </div></section>
+        <section class="control-section"><div class="section-title"><h2>02 / The finish</h2></div>
+          <div class="control-row"><span id="palette-label">Paper & ink</span><div class="segmented" role="group" aria-labelledby="palette-label"><button data-palette="paper" aria-pressed="true">Paper</button><button data-palette="night" aria-pressed="false">Night</button></div></div>
+          <label class="slider-label" for="art">Miku size <output id="art-value" for="art">100%</output></label><input id="art" type="range" min="75" max="125" value="100" step="1">
+          <label class="slider-label" for="texture">Comic texture <output id="texture-value" for="texture">25%</output></label><input id="texture" type="range" min="0" max="60" value="25" step="1">
+          <label class="toggle-row" for="details"><span>Information slots<small>Sample battery + steps</small></span><input id="details" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
+          <label class="toggle-row" for="seconds"><span>Second indicator<small>A small pink accent</small></span><input id="seconds" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
+        </section>
+        <details class="extras"><summary>Preview settings <span>＋</span></summary><div class="extras-body">
+          <div class="control-row"><label for="size">Watch size</label><select id="size"><option value="44">44 mm</option><option value="40">40 mm</option></select></div>
+          <div class="control-row"><label for="format">Time format</label><select id="format"><option value="24">24 hour</option><option value="12">12 hour</option></select></div>
+          <label class="toggle-row" for="live"><span>Use current time<small>Off keeps the study at 10:08</small></span><input id="live" type="checkbox"><span class="toggle" aria-hidden="true"></span></label>
+        </div></details>
+        <div class="actions"><button id="share" class="primary-button">Copy this design <span>↗</span></button><button id="reset" class="reset-button">Reset</button></div>
+        <p class="control-note">Your choices stay in this browser. The copied link includes your design.</p>
+      </aside>
+    </div>
+    <section class="afterword"><div><span class="eyebrow">DESIGNED FOR A GLANCE</span><h2>Personality awake.<br>Just the essentials at rest.</h2><p>Always-on drops the illustration and texture, keeping a simple clock and a trace of teal. Switch views above to compare.</p></div><div class="ambient-card"><div id="ambient-face" class="ambient-face" aria-label="Always-on comparison"></div><span>ALWAYS-ON / DESIGN INTENT</span></div></section>
+    <footer><span>MIKU / WATCH STUDY 001</span><p>Browser concept · sample data · no watch connection.<br>Native layout, battery use and always-on behaviour still need device testing.</p><a href="assets/NOTICE.txt">Artwork & font credits ↗</a></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="share-dialog"><form method="dialog"><h2>Your design link</h2><p>Copy this link to keep or share this version.</p><input id="share-url" aria-label="Design link" readonly><button class="primary-button">Done</button></form></dialog>
+</body>
+</html>
