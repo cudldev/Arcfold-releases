@@ -13,6 +13,8 @@ The illustration was generated for this noncommercial development preview, then 
 
 The simplified long-haired SVG is an authored geometric adaptation for this watch study, under the same character attribution and noncommercial terms above.
 
+The Reference head PNG is a new high-resolution generated adaptation based on the owner's supplied comic UI reference, made with the built-in image generation tool on 2026-11-11. It is not a crop of the reference. It uses the same character attribution and noncommercial terms above.
+
 Barlow Condensed Black Italic is unmodified font software under SIL Open Font License 1.1. Its complete notice is included in the accompanying font-license view.
 
 
