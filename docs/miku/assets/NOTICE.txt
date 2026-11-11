@@ -107,3 +107,5 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE.
+
+The miku-head.png header sticker is a generated head-only adaptation of the same mascot, under the same CC BY-NC 3.0 character notice. Browser depth is rendered in CSS; installed-app icon artwork is not altered.

@@ -7,7 +7,7 @@ const apps = [
   ['Photos','photos','creative'],['Safety','safety','everyday'],['Settings','settings','everyday'],['Spotify','spotify','creative'],
   ['YouTube','youtube','creative'],['YT Music','music','creative']
 ].map(([name, icon, collection]) => ({name, icon, collection}));
-const state = {collection:'all', sort:'az', layout:'grid', keyboard:true, shifted:false, symbols:false, selected:''};
+const state = {collection:'all', sort:'az', layout:'grid', keyboard:true, shifted:false, symbols:false, selected:'', refined:true};
 let toastTimer;
 function toast(message) {
   clearTimeout(toastTimer); $('#toast').textContent=message; $('#toast').classList.add('visible');
@@ -22,7 +22,20 @@ function appButton(app, result=false) {
   const button=document.createElement('button');button.type='button';button.className=result?'result':'app-card';
   button.dataset.app=app.name;button.setAttribute('aria-label',`${app.name}${result?' · App':''}`);button.setAttribute('aria-pressed',String(state.selected===app.name));
   const image=document.createElement('img');image.src=`assets/${app.icon}.${['clock','contacts','drive','gemini','gmail','google','cat','orbit','safety','youtube'].includes(app.icon)?'svg':'png'}`;image.alt='';image.width=48;image.height=48;image.draggable=false;
-  button.append(image);
+  if (result) button.append(image);
+  else {
+    const edge=document.createElement('span');edge.className='paper-edge';edge.setAttribute('aria-hidden','true');button.append(edge);
+    const stage=document.createElement('span');stage.className='icon-stage';stage.setAttribute('aria-hidden','true');stage.append(image);button.append(stage);
+    button.addEventListener('pointermove',event=>{
+      if (!state.refined || event.pointerType!=='mouse' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const bounds=button.getBoundingClientRect();
+      stage.style.setProperty('--tilt-x',`${7-(event.clientY-bounds.top)/bounds.height*8}deg`);
+      stage.style.setProperty('--tilt-y',`${(event.clientX-bounds.left)/bounds.width*12-6}deg`);
+    });
+    const release=()=>{button.classList.remove('is-pressing');stage.style.removeProperty('--tilt-x');stage.style.removeProperty('--tilt-y');};
+    button.addEventListener('pointerdown',()=>button.classList.add('is-pressing'));
+    button.addEventListener('pointerup',release);button.addEventListener('pointercancel',release);button.addEventListener('pointerleave',release);button.addEventListener('blur',release);
+  }
   if (result) {const copy=document.createElement('span');copy.className='result-copy';const name=document.createElement('span');name.className='result-name';name.textContent=app.name;const type=document.createElement('span');type.className='result-type';type.textContent='App';copy.append(name,type);button.append(copy);}
   else {const label=document.createElement('span');label.className='app-label';label.textContent=app.name;button.append(label);}
   button.addEventListener('click',()=>selectApp(app));return button;
@@ -63,9 +76,16 @@ function populateKeys() {
   });
 }
 function updateFinish() {
-  const width=$('#card-width').value,dots=$('#dot-strength').value,gradient=$('#gradient').value;
+  const width=$('#card-width').value,dots=$('#dot-strength').value,gradient=$('#gradient').value,depth=$('#icon-depth').value;
   document.documentElement.style.setProperty('--card-width',`${width}%`);document.documentElement.style.setProperty('--dots',Number(dots)/100);document.documentElement.style.setProperty('--gradient',Number(gradient)/100);
   $('#card-width-value').value=`${width}%`;$('#dot-strength-value').value=`${dots}%`;$('#gradient-value').value=`${gradient}%`;
+  document.documentElement.style.setProperty('--depth',depth);document.documentElement.style.setProperty('--depth-amount',Number(depth)/12);$('#icon-depth-value').value=depth;
+}
+function setDesign(refined) {
+  state.refined=refined;document.body.classList.toggle('is-refined',refined);
+  $('#current-design').setAttribute('aria-pressed',String(!refined));$('#refined-design').setAttribute('aria-pressed',String(refined));
+  document.querySelectorAll('.icon-stage').forEach(stage=>{stage.style.removeProperty('--tilt-x');stage.style.removeProperty('--tilt-y');});
+  [...$('#collection').options].forEach(option=>{const name={all:'Personal',everyday:'Everyday',creative:'Creative'}[option.value];option.textContent=refined?name:`List: ${name}`;});
 }
 function setCanvas(open) {
   document.body.classList.toggle('open-canvas',open);$('#cover-mode').setAttribute('aria-pressed',String(!open));$('#open-mode').setAttribute('aria-pressed',String(open));
@@ -89,7 +109,8 @@ $('#backspace').addEventListener('click',()=>{const input=$('#query');const star
 $('#space').addEventListener('click',()=>editQuery(' '));document.querySelectorAll('[data-character]').forEach(button=>button.addEventListener('click',()=>editQuery(button.dataset.character)));
 $('#keyboard').addEventListener('pointerdown',event=>event.preventDefault());
 $('#cover-mode').addEventListener('click',()=>setCanvas(false));$('#open-mode').addEventListener('click',()=>setCanvas(true));
-['#card-width','#dot-strength','#gradient'].forEach(selector=>$(selector).addEventListener('input',updateFinish));
-$('#reset').addEventListener('click',()=>{$('#card-width').value=82;$('#dot-strength').value=14;$('#gradient').value=1;updateFinish();setCanvas(false);state.collection='all';state.sort='az';state.selected='';state.shifted=false;state.symbols=false;$('#shift').setAttribute('aria-pressed','false');$('#symbols').setAttribute('aria-pressed','false');$('#symbols').textContent='?123';populateKeys();$('#collection').value='all';$('#sort').value='az';setLayout('grid');$('#query').value='Orbit';renderSearch();setKeyboard(true);$('#view-menu').hidden=true;$('#view-menu-button').setAttribute('aria-expanded','false');toast('Study reset');});
+['#card-width','#dot-strength','#gradient','#icon-depth'].forEach(selector=>$(selector).addEventListener('input',updateFinish));
+$('#current-design').addEventListener('click',()=>setDesign(false));$('#refined-design').addEventListener('click',()=>setDesign(true));
+$('#reset').addEventListener('click',()=>{$('#card-width').value=82;$('#dot-strength').value=14;$('#gradient').value=1;$('#icon-depth').value=8;setDesign(true);updateFinish();setCanvas(false);state.collection='all';state.sort='az';state.selected='';state.shifted=false;state.symbols=false;$('#shift').setAttribute('aria-pressed','false');$('#symbols').setAttribute('aria-pressed','false');$('#symbols').textContent='?123';populateKeys();$('#collection').value='all';$('#sort').value='az';setLayout('grid');$('#query').value='Orbit';renderSearch();setKeyboard(true);$('#view-menu').hidden=true;$('#view-menu-button').setAttribute('aria-expanded','false');toast('Study reset');});
 document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(!$('#view-menu').hidden){$('#view-menu').hidden=true;$('#view-menu-button').setAttribute('aria-expanded','false');$('#view-menu-button').focus();}else if(state.keyboard){setKeyboard(false);$('#query').blur();}else{$('#open-search').focus({preventScroll:true});}});
 renderLibrary();renderSearch();populateKeys();updateFinish();

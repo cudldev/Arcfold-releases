@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f3ec">
   <title>Miku · Catalog study</title>
-  <meta name="description" content="Interactive Miku Library and Search design study. Narrow ivory cards, tiny gradients and fading halftone.">
+  <meta name="description" content="Compare Miku catalog refinements: a white comic header, shorter cards, raised icons and a quieter Search field.">
   <link rel="icon" href="assets/study.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="preview.css">
-  <script src="preview.js" defer></script>
+  <link rel="stylesheet" href="preview.css?v=polish2">
+  <link rel="stylesheet" href="polish.css?v=polish2">
+  <script src="preview.js?v=polish2" defer></script>
 </head>
-<body>
+<body class="is-refined">
   <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
     <symbol id="back" viewBox="0 0 24 24"><path d="m13 5-7 7 7 7M6 12h16"/></symbol>
     <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
@@ -25,14 +26,21 @@
   </header>
   <main id="preview" class="studio">
     <aside class="studio-controls" aria-label="Preview controls">
-      <p class="eyebrow">LIBRARY / SEARCH · 01</p>
-      <h1>A little<br>lighter.</h1>
-      <p class="intro">Comic energy. More breathing room.</p>
+      <p class="eyebrow">LIBRARY / SEARCH · 02</p>
+      <h1>A little<br>dimension.</h1>
+      <p class="intro">A white comic header, lighter cards and a little icon depth.</p>
       <div class="control-group">
         <p class="control-heading">CANVAS</p>
         <div class="segmented" role="group" aria-label="Display size">
           <button id="cover-mode" type="button" aria-pressed="true">Cover</button>
           <button id="open-mode" type="button" aria-pressed="false">Open</button>
+        </div>
+      </div>
+      <div class="comparison-control">
+        <p class="control-heading">COMPARE THE DESIGN</p>
+        <div class="segmented" role="group" aria-label="Design comparison">
+          <button id="current-design" type="button" aria-pressed="false">Current</button>
+          <button id="refined-design" type="button" aria-pressed="true">Proposed</button>
         </div>
       </div>
       <div class="control-group sliders">
@@ -43,9 +51,11 @@
         <input id="dot-strength" type="range" min="0" max="28" value="14">
         <label for="gradient">Gradient <output id="gradient-value" for="gradient">1%</output></label>
         <input id="gradient" type="range" min="0" max="3" step="0.25" value="1">
+        <label for="icon-depth">Icon depth <output id="icon-depth-value" for="icon-depth">8</output></label>
+        <input id="icon-depth" type="range" min="0" max="12" step="1" value="8">
         <button id="reset" class="reset" type="button">Reset the study <span aria-hidden="true">↺</span></button>
       </div>
-      <div class="try-note"><span class="note-mark" aria-hidden="true">↗</span><p>Try a search, switch to List, or narrow the cards. App buttons only select a preview.</p></div>
+      <div class="try-note"><span class="note-mark" aria-hidden="true">↗</span><p>Compare Current / Proposed. Tap an icon or move over it to feel the depth. Search and Grid/List still work.</p></div>
       <p class="scope-note">Browser mockup · APK unchanged<br>Static wallpaper · no live app data</p>
     </aside>
     <div class="screens" id="screens">
@@ -58,7 +68,7 @@
             <header class="comic-header">
               <div class="header-dots" aria-hidden="true"></div>
               <h2>APP LIBRARY</h2>
-              <div class="mascot" aria-hidden="true"><img src="assets/miku.png" alt=""><span class="burst burst-one"></span><span class="burst burst-two"></span><span class="burst burst-three"></span></div>
+              <div class="mascot" aria-hidden="true"><img src="assets/miku-head.png" alt=""><span class="burst burst-one"></span><span class="burst burst-two"></span><span class="burst burst-three"></span></div>
             </header>
             <div class="library-toolbar">
               <button class="icon-button" type="button" id="library-back" aria-label="Return to all apps"><svg><use href="#back"/></svg></button>
@@ -66,7 +76,7 @@
               <button class="icon-button" type="button" id="open-search" aria-label="Focus Search"><svg><use href="#search"/></svg></button>
               <button class="icon-button" type="button" id="view-menu-button" aria-label="Library view and sort" aria-expanded="false" aria-controls="view-menu"><svg><use href="#tune"/></svg></button>
             </div>
-            <div class="profile-line"><span id="library-count">22 apps</span><span>Profile: Personal</span></div>
+            <div class="profile-line"><span id="library-count">22 apps</span><span class="single-profile-label">Profile: Personal</span></div>
             <div class="view-menu" id="view-menu" hidden>
               <p>VIEW</p><div class="segmented" role="group" aria-label="Library layout"><button type="button" id="grid-view" aria-pressed="true">Grid</button><button type="button" id="list-view" aria-pressed="false">List</button></div>
               <label for="sort">Sort apps<select id="sort"><option value="az">Name A–Z</option><option value="za">Name Z–A</option></select></label>
