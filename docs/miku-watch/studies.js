@@ -3,8 +3,10 @@ globalThis.WatchStudies = (() => {
   const names={closeup:'Miku Close-up',takeover:'Miku Takeover',headliner:'Miku Headliner',sidekick:'Miku Sidekick',vinyl:'Miku Vinyl',sticker:'Miku Sticker',arc:'Arc',instrument:'Instrument',paper:'Paper'};
   const captions={takeover:'Miku takes the stage. The time gets a bold headline below.',headliner:'Big time at the top. A full-size character underneath.',sidekick:'A sideways time column and a larger-than-life Miku.',vinyl:'A tiny record label, a favourite face, and a big digital clock.',sticker:'A Miku sticker and a crooked time ticket. A little more pop.',arc:'Quiet typography and a sweep of colour across the horizon.',instrument:'A precise field dial, warm markers and useful little details.',paper:'Oversized type, warm paper and a single vermilion accent.'};
   const focusLayouts=['takeover','headliner','sidekick'];
+  names.wink='Miku Wink / Sleep';
+  captions.wink='A playful wink when awake. A sleepy little smile after hours.';
   captions.closeup='Her face fills the dial. The clock sits gently across the fringe.';
-  const isMiku=layout=>['closeup','vinyl','sticker',...focusLayouts].includes(layout);
+  const isMiku=layout=>['wink','closeup','vinyl','sticker',...focusLayouts].includes(layout);
   const text=(x,y,value,size,fill,extra='')=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="${size}" fill="${fill}" ${extra}>${value}</text>`;
   function colour(hex,intensity) {
     return '#'+hex.slice(1).match(/../g).map(pair=>Math.round(parseInt(pair,16)*intensity).toString(16).padStart(2,'0')).join('');
@@ -36,7 +38,15 @@ globalThis.WatchStudies = (() => {
       const angle=t.second*Math.PI/30-Math.PI/2;
       return `<circle cx="${225+Math.cos(angle)*r}" cy="${225+Math.sin(angle)*r}" r="4" fill="${fill}"/>`;
     };
-    if(layout==='closeup') {
+    if(layout==='wink') {
+      bg='#000';
+      const file=ambient?'miku-wink-sleep-v1':'miku-wink-active-v1';
+      if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/${file}.png" x="0" y="0" width="450" height="450" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;
+      defs+=`<path id="wink-time-${id}" d="M25 210 A280 280 0 0 1 425 210"/>`;
+      const clockInk=ambient?'#d0fcf7':'#9cf0ef';
+      content+=`<text font-family="Fredoka,sans-serif" font-size="112" font-weight="700" text-anchor="middle" fill="${clockInk}" paint-order="stroke" stroke="${ambient?clockInk:'#192751'}" stroke-width="${ambient?1:7}" stroke-linejoin="round"><textPath href="#wink-time-${id}" startOffset="50%" textLength="305" lengthAdjust="spacingAndGlyphs">${t.hour}:${t.minute}</textPath></text>`;
+      content+=text(225,164,`${t.day} ${t.date}${state.format==='12'?' · '+t.period:''}`,25,ambient?'#62c4b8':'#192751','font-family="Fredoka,sans-serif" font-weight="700"');
+    } else if(layout==='closeup') {
       bg=ambient?'#000':'#78adbd';
       const closeupArt=ambient?'soft-chibi-full-face-aod-outline-v1':'soft-chibi-full-face-v1';
       if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/${closeupArt}.png" x="0" y="0" width="450" height="450" preserveAspectRatio="xMidYMid slice" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;

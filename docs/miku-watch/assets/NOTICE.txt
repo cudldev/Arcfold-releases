@@ -119,3 +119,5 @@ The miku-head.png header sticker is a generated head-only adaptation of the same
 Clock font comparisons: Fredoka, Nunito and Baloo 2 are unmodified variable fonts from the official google/fonts repository, under SIL OFL 1.1. Complete per-family copyright/licence text and source provenance are included in assets/fonts/.
 
 soft-chibi-full-face-aod-outline-v1.png is a generated outline adaptation of soft-chibi-full-face-v1.png for the Close-up always-on preview, under the same Miku character notice.
+
+miku-wink-active-v1.png and miku-wink-sleep-v1.png are generated text-free adaptations of the Wink / Sleep concepts, under the same Miku character notice. Time and date are rendered separately using self-hosted Fredoka under its bundled OFL.

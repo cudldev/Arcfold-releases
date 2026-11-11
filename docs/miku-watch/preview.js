@@ -2,7 +2,7 @@
   'use strict';
   const studies=globalThis.WatchStudies;
   const defaults = {layout:'comic',font:'fredoka',character:'reference',palette:'paper',mode:'active',art:100,texture:25,aod:55,aodstyle:'colour',details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
-  const choices = {layout:['closeup','takeover','headliner','sidekick','comic','vinyl','sticker','arc','instrument','paper','portrait','dial'],character:['original','reference'],palette:['paper','night'],mode:['active','ambient'],aodstyle:['colour','teal'],size:['40','44'],format:['12','24']};
+  const choices = {layout:['wink','closeup','takeover','headliner','sidekick','comic','vinyl','sticker','arc','instrument','paper','portrait','dial'],character:['original','reference'],palette:['paper','night'],mode:['active','ambient'],aodstyle:['colour','teal'],size:['40','44'],format:['12','24']};
   const names = {comic:'Comic',portrait:'Portrait',dial:'Backstage',...studies.names};
   choices.font=['fredoka','nunito','baloo','barlow'];
   const captions = {comic:'The Comic clock, with Miku’s playful sticker expression.',portrait:'An oversized time header. Miku takes the lower stage.',dial:'A classic dial with a tiny backstage guest.',...studies.captions};
@@ -133,16 +133,17 @@
     $('stage-label').textContent=`${names[state.layout].toUpperCase()} / ${state.mode==='active'?'ACTIVE':'ALWAYS-ON'}`;
     $('case-label').textContent=`${state.size} MM / ILLUSTRATIVE CASE`;
     const miku=!['arc','instrument','paper'].includes(state.layout);
-    const focus=['closeup','takeover','headliner','sidekick'].includes(state.layout);
+    const focus=['wink','closeup','takeover','headliner','sidekick'].includes(state.layout);
     $('character-controls').hidden=!miku||focus;
     $('info-controls').hidden=focus;
-    $('palette-controls').hidden=state.layout==='closeup';
+    $('palette-controls').hidden=['wink','closeup'].includes(state.layout);
     $('font-controls').hidden=state.layout!=='closeup';
     for(const id of ['art-controls','texture-controls']) $(id).hidden=!miku;
-    if(state.layout==='closeup') for(const id of ['art-controls','texture-controls']) $(id).hidden=true;
+    if(['wink','closeup'].includes(state.layout)) for(const id of ['art-controls','texture-controls']) $(id).hidden=true;
     $('preview-stage').dataset.family=miku?'miku':state.layout;
     $('stage-caption').textContent=state.mode==='ambient'?(state.aod>0?(miku?(state.aodstyle==='colour'?'Miku keeps her colours after hours.':'A quiet teal Miku stays with the clock.'):'The essential dial, with a little colour after hours.'):'A quieter clock. Accent intensity is off.'):captions[state.layout];
     if(state.layout==='closeup'&&state.mode==='ambient'&&state.aod>0) $('stage-caption').textContent='A quiet outline of Miku on black, with the curved clock above.';
+    if(state.layout==='wink'&&state.mode==='ambient'&&state.aod>0) $('stage-caption').textContent='Sleeping Miku, with a bright and readable clock.';
     // Texture/artwork settings remain adjustable for the active face while comparing ambient.
     updateFaces();
     if(persist) {try{localStorage.setItem(storageKey,JSON.stringify(state));}catch{}}
@@ -176,3 +177,4 @@
   },1000);
   render(false);
 })();
+
