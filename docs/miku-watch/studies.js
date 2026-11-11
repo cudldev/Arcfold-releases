@@ -40,9 +40,11 @@ globalThis.WatchStudies = (() => {
       bg=ambient?'#000':'#78adbd';
       if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/soft-chibi-full-face-v1.png" x="0" y="0" width="450" height="450" preserveAspectRatio="xMidYMid slice" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;
       const clockInk='#75b5ca';
+      const clockFamily={fredoka:'Fredoka',nunito:'Nunito',baloo:'Baloo 2',barlow:'Barlow'}[state.font]||'Fredoka';
+      const clockWeight=state.font==='nunito'?800:state.font==='fredoka'?600:700;
       defs+=`<path id="closeup-time-${id}" d="M65 225 A160 160 0 0 1 385 225"/>`;
-      content+=`<text font-size="64" font-weight="700" text-anchor="middle" fill="${clockInk}" paint-order="stroke" stroke="#192751" stroke-width="5" stroke-linejoin="round"><textPath href="#closeup-time-${id}" startOffset="50%" textLength="220" lengthAdjust="spacingAndGlyphs">${t.hour}:${t.minute}</textPath></text>`;
-      content+=text(225,127,`${t.day} ${t.date}${state.format==='12'?' · '+t.period:''}`,14,clockInk,'font-weight="700" letter-spacing="1.5" paint-order="stroke" stroke="#192751" stroke-width="3"');
+      content+=`<text font-family="'${clockFamily}',Barlow,sans-serif" font-size="64" font-weight="${clockWeight}" text-anchor="middle" fill="${clockInk}" paint-order="stroke" stroke="#192751" stroke-width="5" stroke-linejoin="round"><textPath href="#closeup-time-${id}" startOffset="50%" textLength="220" lengthAdjust="spacingAndGlyphs">${t.hour}:${t.minute}</textPath></text>`;
+      content+=text(225,127,`${t.day} ${t.date}${state.format==='12'?' · '+t.period:''}`,14,clockInk,`font-family="'${clockFamily}',Barlow,sans-serif" font-weight="700" letter-spacing="1.5" paint-order="stroke" stroke="#192751" stroke-width="3"`);
       content+=secondDot(208,'#192751');
     } else if(focusLayouts.includes(layout)) {
       const pink=accent('#f34d8b'),teal=accent('#15baa6');

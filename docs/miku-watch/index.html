@@ -6,9 +6,10 @@
   <meta name="theme-color" content="#eeeee7">
   <meta name="description" content="Character-led Miku watch faces with bold time, plus eight earlier watch studies. Compare active and full-colour always-on.">
   <title>On your wrist / Watch face studies</title>
-  <link rel="stylesheet" href="preview.css?v=curve9">
-  <script src="studies.js?v=curve9" defer></script>
-  <script src="preview.js?v=curve9" defer></script>
+  <link rel="stylesheet" href="preview.css?v=fonts10">
+  <link rel="preload" href="assets/fonts/fredoka.ttf" as="font" type="font/ttf" crossorigin>
+  <script src="studies.js?v=fonts10" defer></script>
+  <script src="preview.js?v=fonts10" defer></script>
 </head>
 <body>
   <header class="masthead"><a class="wordmark" href="#">FACE<span class="mark">04</span><span class="wordmark-sub">ON YOUR WRIST.</span></a><span class="edition">CLOSE-UP STUDY / 004</span></header>
@@ -42,6 +43,7 @@
           <button class="direction" data-layout="dial" aria-pressed="false"><span class="mini-face" id="mini-dial" aria-hidden="true"></span><span><strong>Backstage</strong><small>A quieter analog moment.</small></span><span class="choice-dot"></span></button>
         </div></details></section>
         <section class="control-section"><div class="section-title"><h2>02 / The finish</h2></div>
+          <div class="control-row" id="font-controls"><label for="font">Clock font</label><select id="font"><option value="fredoka">Fredoka · soft</option><option value="nunito">Nunito · clean</option><option value="baloo">Baloo 2 · chunky</option><option value="barlow">Barlow · previous</option></select></div>
           <div class="control-row" id="character-controls"><span id="character-label">Miku artwork</span><div class="segmented" role="group" aria-labelledby="character-label"><button data-character="original" aria-pressed="false">Original</button><button data-character="reference" aria-pressed="true">Reference</button></div></div>
           <div class="control-row" id="palette-controls"><span id="palette-label">Finish</span><div class="segmented" role="group" aria-labelledby="palette-label"><button data-palette="paper" aria-pressed="true">Paper</button><button data-palette="night" aria-pressed="false">Night</button></div></div>
           <div id="art-controls"><label class="slider-label" for="art">Miku size <output id="art-value" for="art">100%</output></label><input id="art" type="range" min="75" max="125" value="100" step="1"></div>

@@ -116,3 +116,4 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 
 The miku-head.png header sticker is a generated head-only adaptation of the same mascot, under the same CC BY-NC 3.0 character notice. Browser depth is rendered in CSS; installed-app icon artwork is not altered.
 
+Clock font comparisons: Fredoka, Nunito and Baloo 2 are unmodified variable fonts from the official google/fonts repository, under SIL OFL 1.1. Complete per-family copyright/licence text and source provenance are included in assets/fonts/.

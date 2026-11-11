@@ -1,9 +1,10 @@
 (() => {
   'use strict';
   const studies=globalThis.WatchStudies;
-  const defaults = {layout:'comic',character:'reference',palette:'paper',mode:'active',art:100,texture:25,aod:55,aodstyle:'colour',details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
+  const defaults = {layout:'comic',font:'fredoka',character:'reference',palette:'paper',mode:'active',art:100,texture:25,aod:55,aodstyle:'colour',details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
   const choices = {layout:['closeup','takeover','headliner','sidekick','comic','vinyl','sticker','arc','instrument','paper','portrait','dial'],character:['original','reference'],palette:['paper','night'],mode:['active','ambient'],aodstyle:['colour','teal'],size:['40','44'],format:['12','24']};
   const names = {comic:'Comic',portrait:'Portrait',dial:'Backstage',...studies.names};
+  choices.font=['fredoka','nunito','baloo','barlow'];
   const captions = {comic:'The Comic clock, with Miku’s playful sticker expression.',portrait:'An oversized time header. Miku takes the lower stage.',dial:'A classic dial with a tiny backstage guest.',...studies.captions};
   const storageKey = 'miku-watch-study-001';
   const $ = id => document.getElementById(id);
@@ -121,7 +122,7 @@
   }
   function render(persist=true) {
     for(const type of ['layout','character','palette','mode','aodstyle']) for(const button of document.querySelectorAll(`[data-${type}]`)) button.setAttribute('aria-pressed',String(button.dataset[type]===state[type]));
-    for(const key of ['art','texture','aod','size','format']) $(key).value=state[key];
+    for(const key of ['art','texture','aod','size','format','font']) $(key).value=state[key];
     for(const key of ['details','seconds','live']) $(key).checked=state[key];
     $('art-value').value=state.art+'%'; $('texture-value').value=state.texture+'%';
     $('aod-value').value=state.aod===0?'Off':state.aod+'%';
@@ -136,6 +137,7 @@
     $('character-controls').hidden=!miku||focus;
     $('info-controls').hidden=focus;
     $('palette-controls').hidden=state.layout==='closeup';
+    $('font-controls').hidden=state.layout!=='closeup';
     for(const id of ['art-controls','texture-controls']) $(id).hidden=!miku;
     if(state.layout==='closeup') for(const id of ['art-controls','texture-controls']) $(id).hidden=true;
     $('preview-stage').dataset.family=miku?'miku':state.layout;
@@ -151,7 +153,7 @@
   function change(key,value) { state=sanitize({...state,[key]:value});render(); }
   for(const key of ['layout','character','palette','mode','aodstyle']) document.querySelectorAll(`[data-${key}]`).forEach(button=>button.addEventListener('click',()=>change(key,button.dataset[key])));
   for(const key of ['art','texture','aod']) $(key).addEventListener('input',event=>change(key,event.target.value));
-  for(const key of ['size','format']) $(key).addEventListener('change',event=>change(key,event.target.value));
+  for(const key of ['size','format','font']) $(key).addEventListener('change',event=>change(key,event.target.value));
   for(const key of ['details','seconds','live']) $(key).addEventListener('change',event=>change(key,event.target.checked));
   $('bare').addEventListener('click',()=>change('bare',!state.bare));
   $('reset').addEventListener('click',()=>{state={...defaults};history.replaceState(null,'',location.pathname+location.search);render();toast('Back to the Comic reference design.');});
