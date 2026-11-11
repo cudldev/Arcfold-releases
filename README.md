@@ -12,6 +12,9 @@ Version code 27 · **Arcfold Dev** · Android 12/API31 or newer · Owner testing
 
 Update the existing Arcfold Dev install to retain your saved layout. You can try Home before choosing it as the default launcher. GitHub's source ZIP contains these download pages; application source/history remain private.
 
+
+[Interactive Miku Library/Search design study](https://cudldev.github.io/Arcfold-releases/miku/) — browser mockup, separate from the APK. Narrow cards, barely perceptible gradients and fading halftone, with comparison controls.
+
 ## Miku improvements
 
 - Comic Library/Search: teal print, cream sticker tiles and rows, matching headers and directional transitions.

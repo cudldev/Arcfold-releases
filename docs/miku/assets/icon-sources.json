@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Spotify",
+    "package": "com.spotify.music",
+    "listing": "https://play.google.com/store/apps/details?id=com.spotify.music&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/IzQgYCcnCFCD08GR-3bdtcT8xzOvrNkC84avGT5CwTX2VIqmTmKKJcP_Cd4JoBOdmCMlTndlOzV6hrthg2fOWA=w96-h96",
+    "file": "spotify.png",
+    "sha256": "c95b1187cbe7c2dd9fabfb81843ba132445739cddbb68538f07b2622749f7826",
+    "bytes": 3694
+  },
+  {
+    "name": "Camera",
+    "package": "com.google.android.GoogleCamera",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/boOY2KNmAAJVT_Rmiu-mg85qCyORmXDAng1pPZuAOnOpqqvBM3lBsVvpWOvrk0zjmkSUn9kpRutkcmSkv61E=w96-h96",
+    "file": "camera.png",
+    "sha256": "037645aa1ab5db1243d016c9174af8676be23f66ceef9c055a3e9dc35e8f95b2",
+    "bytes": 3216
+  },
+  {
+    "name": "Messages",
+    "package": "com.google.android.apps.messaging",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.apps.messaging&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/Ndfiaudmk4fiveYNm5Gsnso8gFcvLeskQUdwgh9yNnOghIH0LN-Hth_yAMsY2TxN1u9jleiOX6Y81Wh5Vy5M=w96-h96",
+    "file": "messages.png",
+    "sha256": "8660e544e981d2368075e9f8c36a6dce48ab2ee13691199644d249db29286f44",
+    "bytes": 2611
+  },
+  {
+    "name": "Maps",
+    "package": "com.google.android.apps.maps",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/B8pdO_2K5nBsF0g1h6dKwV_jQFLP-XombGDEQGtJT-mw1EUKCKJpa9lBGCF4rP_MwCsozSXyvI3z19g9R3J4=w96-h96",
+    "file": "maps.png",
+    "sha256": "e6604cf97969396b07dfed896be856f7238b47f75b96f9be2faf605330424452",
+    "bytes": 3190
+  },
+  {
+    "name": "Chrome",
+    "package": "com.android.chrome",
+    "listing": "https://play.google.com/store/apps/details?id=com.android.chrome&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/gbkzfC3R1fXcGR4Uag1uRSN_123Tpo_KxhVZFLFCatmthFuO1bzPczUomFtxI42YYEQMJeAaZuIFVrTF58gZYg=w96-h96",
+    "file": "chrome.png",
+    "sha256": "8c166c50b8120fcdf8b23fd18c4d41fd889df9f0648d1b5fdbc8ec3667efddf3",
+    "bytes": 4402
+  },
+  {
+    "name": "Phone",
+    "package": "com.google.android.dialer",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.dialer&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/Q8H3qzqdVjWtyUGYAK6DoDJBYbtSmfmnIPfB5mRKRq01aWiIVRIxvlgDx6mbvkzanEczMTWL_7Ak0sLwe5GCEA=w96-h96",
+    "file": "phone.png",
+    "sha256": "c4b1e3a339d873a1edd7444914d256f6007e7bf07f6682d297cfb2bad8a149e2",
+    "bytes": 2278
+  },
+  {
+    "name": "Calendar",
+    "package": "com.google.android.calendar",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.calendar&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/vEoqLbT_QkYcEaawWBRc22N6i98OUtOUpM1LmKdVs_xx7lCsUyFfV0ZiqoUXjMijUteiBhhN4K5MpoF96FRNOg=w96-h96",
+    "file": "calendar.png",
+    "sha256": "ae02e1052d7d3fe878f9d55fdfaa7e8839e9d0332784393dcd08dbc93a24715d",
+    "bytes": 3508
+  },
+  {
+    "name": "Photos",
+    "package": "com.google.android.apps.photos",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.apps.photos&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/kErBTF4VcGwhtKbCr80Bs2R1lNZiYkHbKcf1i3ZF6dg_5LqDAlCI4wU-nzwvo7PAbxeBXM_tv1hc11gr4aIIW-Q=w96-h96",
+    "file": "photos.png",
+    "sha256": "39f1f410decc6e0e0a1ed985e1b96a682b5b26b4edb4634109bb230beb9ba8b1",
+    "bytes": 2954
+  },
+  {
+    "name": "Files",
+    "package": "com.google.android.apps.nbu.files",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.files&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/cjyFg0ABFwOFdLf1GsCGRvOoAANqCnIsFCgwGe8g-FPVaQ5STxoqZAKQOph44Hlx-gO0GMx8AZC9AY1VUBiO=w96-h96",
+    "file": "files.png",
+    "sha256": "27c745fc1778c6402c5ab33936dbf414dcc765eb3a66a6bc96f31bc5a3e39e8b",
+    "bytes": 3361
+  },
+  {
+    "name": "Music",
+    "package": "com.google.android.apps.youtube.music",
+    "listing": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music&hl=en",
+    "iconUrl": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw=w96-h96",
+    "file": "music.png",
+    "sha256": "e6937017017c71b66df6d2b96e44968c9d040e08317b1e55a5551a69c8fcbc2a",
+    "bytes": 2549
+  }
+]

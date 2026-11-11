@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ec">
+  <title>Miku · Catalog study</title>
+  <meta name="description" content="Interactive Miku Library and Search design study. Narrow ivory cards, tiny gradients and fading halftone.">
+  <link rel="icon" href="assets/study.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="back" viewBox="0 0 24 24"><path d="m13 5-7 7 7 7M6 12h16"/></symbol>
+    <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="tune" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="9" cy="6" r="2.3"/><circle cx="16" cy="12" r="2.3"/><circle cx="7" cy="18" r="2.3"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+    <symbol id="down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  </defs></svg>
+  <header class="page-header">
+    <a href="#preview" class="wordmark">MIKU<span> / </span>CATALOG LAB</a>
+    <span class="study-tag"><i></i> Interactive design study</span>
+  </header>
+  <main id="preview" class="studio">
+    <aside class="studio-controls" aria-label="Preview controls">
+      <p class="eyebrow">LIBRARY / SEARCH · 01</p>
+      <h1>A little<br>lighter.</h1>
+      <p class="intro">Comic energy. More breathing room.</p>
+      <div class="control-group">
+        <p class="control-heading">CANVAS</p>
+        <div class="segmented" role="group" aria-label="Display size">
+          <button id="cover-mode" type="button" aria-pressed="true">Cover</button>
+          <button id="open-mode" type="button" aria-pressed="false">Open</button>
+        </div>
+      </div>
+      <div class="control-group sliders">
+        <p class="control-heading">THE FINISH</p>
+        <label for="card-width">Card backing <output id="card-width-value" for="card-width">82%</output></label>
+        <input id="card-width" type="range" min="66" max="100" value="82">
+        <label for="dot-strength">Halftone <output id="dot-strength-value" for="dot-strength">14%</output></label>
+        <input id="dot-strength" type="range" min="0" max="28" value="14">
+        <label for="gradient">Gradient <output id="gradient-value" for="gradient">1%</output></label>
+        <input id="gradient" type="range" min="0" max="3" step="0.25" value="1">
+        <button id="reset" class="reset" type="button">Reset the study <span aria-hidden="true">↺</span></button>
+      </div>
+      <div class="try-note"><span class="note-mark" aria-hidden="true">↗</span><p>Try a search, switch to List, or narrow the cards. App buttons only select a preview.</p></div>
+      <p class="scope-note">Browser mockup · APK unchanged<br>Static wallpaper · no live app data</p>
+    </aside>
+    <div class="screens" id="screens">
+      <section class="screen-study" aria-labelledby="library-caption">
+        <div class="screen-caption"><h2 id="library-caption">01 <span>Library</span></h2><span>YOUR APPS, A LITTLE AIRIER</span></div>
+        <div class="device" id="library-device">
+          <div class="surface library-surface">
+            <div class="scene-print" aria-hidden="true"></div><div class="halftone" aria-hidden="true"></div>
+            <div class="status-bar" aria-hidden="true"><span>10:39</span><span class="status-symbols"><b>▂▄▆█</b><span>◔</span><i></i></span></div>
+            <header class="comic-header">
+              <div class="header-dots" aria-hidden="true"></div>
+              <h2>APP LIBRARY</h2>
+              <div class="mascot" aria-hidden="true"><img src="assets/miku.png" alt=""><span class="burst burst-one"></span><span class="burst burst-two"></span><span class="burst burst-three"></span></div>
+            </header>
+            <div class="library-toolbar">
+              <button class="icon-button" type="button" id="library-back" aria-label="Return to all apps"><svg><use href="#back"/></svg></button>
+              <label class="collection"><span class="sr-only">Library collection</span><select id="collection"><option value="all">Personal</option><option value="everyday">Everyday</option><option value="creative">Creative</option></select><span aria-hidden="true">▾</span></label>
+              <button class="icon-button" type="button" id="open-search" aria-label="Focus Search"><svg><use href="#search"/></svg></button>
+              <button class="icon-button" type="button" id="view-menu-button" aria-label="Library view and sort" aria-expanded="false" aria-controls="view-menu"><svg><use href="#tune"/></svg></button>
+            </div>
+            <div class="profile-line"><span id="library-count">22 apps</span><span>Profile: Personal</span></div>
+            <div class="view-menu" id="view-menu" hidden>
+              <p>VIEW</p><div class="segmented" role="group" aria-label="Library layout"><button type="button" id="grid-view" aria-pressed="true">Grid</button><button type="button" id="list-view" aria-pressed="false">List</button></div>
+              <label for="sort">Sort apps<select id="sort"><option value="az">Name A–Z</option><option value="za">Name Z–A</option></select></label>
+            </div>
+            <div class="library-scroll"><div class="app-grid" id="app-grid" aria-label="Apps"></div></div>
+            <div class="gesture-bar" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+      <section class="screen-study" aria-labelledby="search-caption">
+        <div class="screen-caption"><h2 id="search-caption">02 <span>Search</span></h2><span>FIND YOUR WAY</span></div>
+        <div class="device" id="search-device">
+          <div class="surface search-surface">
+            <div class="scene-print" aria-hidden="true"></div><div class="halftone" aria-hidden="true"></div>
+            <div class="status-bar" aria-hidden="true"><span>10:39</span><span class="status-symbols"><b>▂▄▆█</b><span>◔</span><i></i></span></div>
+            <div class="search-content"><div id="search-results" class="search-results" aria-live="polite" aria-label="Search results"></div></div>
+            <form id="search-form" class="search-toolbar" role="search">
+              <div class="search-field"><svg aria-hidden="true"><use href="#search"/></svg><label class="sr-only" for="query">Search all apps</label><input id="query" type="search" inputmode="none" autocomplete="off" spellcheck="false" value="Orbit" placeholder="Search apps"><button type="button" id="clear-query" aria-label="Clear Search"><svg><use href="#close"/></svg></button></div>
+              <button type="button" class="icon-button" id="keyboard-toggle" aria-label="Hide preview keyboard" aria-pressed="true"><svg><use href="#down"/></svg></button>
+              <button type="button" class="cancel-search" id="cancel-search">Cancel</button>
+            </form>
+          </div>
+          <div class="keyboard" id="keyboard" aria-label="Preview keyboard">
+            <div class="suggestions"><svg aria-hidden="true"><use href="#grid"/></svg><span id="suggestion">Orbit</span><span>Orbital</span><span>Orbits</span><span aria-hidden="true">●</span></div>
+            <div class="key-row" data-letters="qwertyuiop"></div><div class="key-row middle-row" data-letters="asdfghjkl"></div>
+            <div class="key-row"><button type="button" class="utility-key" id="shift" aria-label="Shift" aria-pressed="false">⇧</button><div class="letter-group" data-letters="zxcvbnm"></div><button type="button" class="utility-key" id="backspace" aria-label="Backspace">⌫</button></div>
+            <div class="key-row last-row"><button type="button" class="utility-key" id="symbols" aria-label="Numbers and symbols" aria-pressed="false">?123</button><button type="button" class="punctuation" data-character=",">,</button><button type="button" class="space-key" id="space" aria-label="Space"></button><button type="button" class="punctuation" data-character=".">.</button><button type="button" class="utility-key" id="keyboard-search" aria-label="Search"><svg><use href="#search"/></svg></button></div>
+            <div class="keyboard-footer"><button type="button" id="hide-keyboard" aria-label="Hide preview keyboard"><svg><use href="#down"/></svg></button><div class="gesture-bar" aria-hidden="true"></div></div>
+          </div>
+          <div class="gesture-bar without-keyboard" aria-hidden="true"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="page-footer"><span>MIKU / DESIGN EXPLORATION</span><p>Character adaptation © Crypton Future Media, INC. 2007 · CC BY-NC 3.0 · No endorsement. <a href="assets/NOTICE.txt">Artwork &amp; font notices</a></p></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
