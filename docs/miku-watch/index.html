@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#eeeee7">
-  <meta name="description" content="Eight interactive Galaxy Watch face studies: Miku, vinyl, stickers, quiet arcs, instrument dials and bold paper typography. Compare active and full-colour always-on.">
+  <meta name="description" content="Character-led Miku watch faces with bold time, plus eight earlier watch studies. Compare active and full-colour always-on.">
   <title>On your wrist / Watch face studies</title>
-  <link rel="stylesheet" href="preview.css?v=faces6">
-  <script src="studies.js?v=faces6" defer></script>
-  <script src="preview.js?v=faces6" defer></script>
+  <link rel="stylesheet" href="preview.css?v=heroes7">
+  <script src="studies.js?v=heroes7" defer></script>
+  <script src="preview.js?v=heroes7" defer></script>
 </head>
 <body>
-  <header class="masthead"><a class="wordmark" href="#">FACE<span class="mark">02</span><span class="wordmark-sub">ON YOUR WRIST.</span></a><span class="edition">WATCH FACE STUDIES / 002</span></header>
+  <header class="masthead"><a class="wordmark" href="#">FACE<span class="mark">03</span><span class="wordmark-sub">ON YOUR WRIST.</span></a><span class="edition">CHARACTER STUDIES / 003</span></header>
   <main>
-    <section class="intro"><div><p class="eyebrow">GALAXY WATCH 8 · DESIGN PLAYGROUND</p><h1>A face for<br>every <em>mood.</em></h1></div><p class="intro-note">Miku, music, quiet type and precise dials.<br>Eight directions. Pick one and make it yours.</p></section>
+    <section class="intro"><div><p class="eyebrow">GALAXY WATCH 8 · DESIGN PLAYGROUND</p><h1>Big character.<br><em>Bolder</em> time.</h1></div><p class="intro-note">Three new faces that give Miku the stage.<br>Big portraits, strong time, all her personality.</p></section>
     <div class="workspace">
       <section class="stage" id="preview-stage" aria-label="Watch face preview">
         <div class="stage-top"><span><i class="status-dot"></i><span id="stage-label">COMIC / ACTIVE</span></span><button class="text-button" id="bare" aria-pressed="false">Hide watch case ↗</button></div>
@@ -26,7 +26,11 @@
         <div class="stage-bottom"><span>ROUND DISPLAY · CONCEPT PREVIEW</span><span id="case-label">44 MM / ILLUSTRATIVE CASE</span></div>
       </section>
       <aside class="controls" aria-label="Design controls">
-        <section class="control-section"><div class="section-title"><h2>01 / The direction</h2><span>EIGHT STUDIES</span></div><div class="directions" role="group" aria-label="Face direction">
+        <section class="control-section"><div class="section-title"><h2>01 / The direction</h2><span>CHARACTER FIRST</span></div><div class="directions focus-directions" role="group" aria-label="New character directions">
+          <button class="direction" data-layout="takeover" aria-pressed="false"><span class="mini-face" id="mini-takeover" aria-hidden="true"></span><span><strong>Takeover</strong><small>Miku above bold time.</small></span><span class="choice-dot"></span></button>
+          <button class="direction" data-layout="headliner" aria-pressed="false"><span class="mini-face" id="mini-headliner" aria-hidden="true"></span><span><strong>Headliner</strong><small>Time above a giant portrait.</small></span><span class="choice-dot"></span></button>
+          <button class="direction" data-layout="sidekick" aria-pressed="false"><span class="mini-face" id="mini-sidekick" aria-hidden="true"></span><span><strong>Sidekick</strong><small>Vertical time. Big character.</small></span><span class="choice-dot"></span></button>
+        </div><details class="earlier-studies"><summary>Earlier studies (8) <span>＋</span></summary><div class="directions" role="group" aria-label="Earlier face directions">
           <button class="direction" data-layout="comic" aria-pressed="true"><span class="mini-face" id="mini-comic" aria-hidden="true"></span><span><strong>Comic</strong><small>Selected · comic Miku sticker.</small></span><span class="choice-dot"></span></button>
           <button class="direction" data-layout="vinyl" aria-pressed="false"><span class="mini-face" id="mini-vinyl" aria-hidden="true"></span><span><strong>Miku Vinyl</strong><small>Record-label charm.</small></span><span class="choice-dot"></span></button>
           <button class="direction" data-layout="sticker" aria-pressed="false"><span class="mini-face" id="mini-sticker" aria-hidden="true"></span><span><strong>Miku Sticker</strong><small>A little more pop.</small></span><span class="choice-dot"></span></button>
@@ -35,7 +39,7 @@
           <button class="direction" data-layout="paper" aria-pressed="false"><span class="mini-face" id="mini-paper" aria-hidden="true"></span><span><strong>Paper</strong><small>Type with presence.</small></span><span class="choice-dot"></span></button>
           <button class="direction" data-layout="portrait" aria-pressed="false"><span class="mini-face" id="mini-portrait" aria-hidden="true"></span><span><strong>Portrait</strong><small>More Miku. Less noise.</small></span><span class="choice-dot"></span></button>
           <button class="direction" data-layout="dial" aria-pressed="false"><span class="mini-face" id="mini-dial" aria-hidden="true"></span><span><strong>Backstage</strong><small>A quieter analog moment.</small></span><span class="choice-dot"></span></button>
-        </div></section>
+        </div></details></section>
         <section class="control-section"><div class="section-title"><h2>02 / The finish</h2></div>
           <div class="control-row" id="character-controls"><span id="character-label">Miku artwork</span><div class="segmented" role="group" aria-labelledby="character-label"><button data-character="original" aria-pressed="false">Original</button><button data-character="reference" aria-pressed="true">Reference</button></div></div>
           <div class="control-row"><span id="palette-label">Finish</span><div class="segmented" role="group" aria-labelledby="palette-label"><button data-palette="paper" aria-pressed="true">Paper</button><button data-palette="night" aria-pressed="false">Night</button></div></div>
@@ -43,7 +47,7 @@
           <div id="texture-controls"><label class="slider-label" for="texture">Comic texture <output id="texture-value" for="texture">25%</output></label><input id="texture" type="range" min="0" max="60" value="25" step="1"></div>
           <div class="control-row aod-style-row"><span id="aodstyle-label">Always-on colour</span><div class="segmented" role="group" aria-labelledby="aodstyle-label"><button data-aodstyle="colour" aria-pressed="true">Colour</button><button data-aodstyle="teal" aria-pressed="false">Teal</button></div></div>
           <label class="slider-label" for="aod">Always-on accents <output id="aod-value" for="aod">55%</output></label><input id="aod" type="range" min="0" max="100" value="55" step="1" aria-description="Preview intensity of always-on artwork and accents. Zero hides Miku and coloured accents. This does not set physical watch brightness.">
-          <label class="toggle-row" for="details"><span>Information slots<small>Sample battery + steps</small></span><input id="details" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
+          <label class="toggle-row" id="info-controls" for="details"><span>Information slots<small>Sample battery + steps</small></span><input id="details" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
           <label class="toggle-row" for="seconds"><span>Second indicator<small>A small moving accent</small></span><input id="seconds" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
         </section>
         <details class="extras"><summary>Preview settings <span>＋</span></summary><div class="extras-body">
@@ -56,7 +60,7 @@
       </aside>
     </div>
     <section class="afterword"><div><span class="eyebrow">DESIGNED FOR A GLANCE</span><h2>Keep the character.<br>Even after hours.</h2><p>Always-on can keep Miku’s colours or the dial’s signature accent. Compare Colour and Teal, then tune the intensity. These are design studies; actual display brightness and power use need watch testing.</p></div><div class="ambient-card"><div id="ambient-face" class="ambient-face" aria-label="Always-on comparison"></div><span>ALWAYS-ON / DESIGN INTENT</span></div></section>
-    <footer><span>ON YOUR WRIST / STUDY 002</span><p>Browser concept · sample data · no watch connection.<br>Native layout, battery use and always-on behaviour still need device testing.</p><a href="assets/NOTICE.txt">Artwork & font credits ↗</a></footer>
+    <footer><span>ON YOUR WRIST / STUDY 003</span><p>Browser concept · sample data · no watch connection.<br>Native layout, battery use and always-on behaviour still need device testing.</p><a href="assets/NOTICE.txt">Artwork & font credits ↗</a></footer>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <dialog id="share-dialog"><form method="dialog"><h2>Your design link</h2><p>Copy this link to keep or share this version.</p><input id="share-url" aria-label="Design link" readonly><button class="primary-button">Done</button></form></dialog>

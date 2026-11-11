@@ -1,8 +1,9 @@
 /* Standalone watch face studies. All information is illustrative sample data. */
 globalThis.WatchStudies = (() => {
-  const names={vinyl:'Miku Vinyl',sticker:'Miku Sticker',arc:'Arc',instrument:'Instrument',paper:'Paper'};
-  const captions={vinyl:'A tiny record label, a favourite face, and a big digital clock.',sticker:'A Miku sticker and a crooked time ticket. A little more pop.',arc:'Quiet typography and a sweep of colour across the horizon.',instrument:'A precise field dial, warm markers and useful little details.',paper:'Oversized type, warm paper and a single vermilion accent.'};
-  const isMiku=layout=>['vinyl','sticker'].includes(layout);
+  const names={takeover:'Miku Takeover',headliner:'Miku Headliner',sidekick:'Miku Sidekick',vinyl:'Miku Vinyl',sticker:'Miku Sticker',arc:'Arc',instrument:'Instrument',paper:'Paper'};
+  const captions={takeover:'Miku takes the stage. The time gets a bold headline below.',headliner:'Big time at the top. A full-size character underneath.',sidekick:'A sideways time column and a larger-than-life Miku.',vinyl:'A tiny record label, a favourite face, and a big digital clock.',sticker:'A Miku sticker and a crooked time ticket. A little more pop.',arc:'Quiet typography and a sweep of colour across the horizon.',instrument:'A precise field dial, warm markers and useful little details.',paper:'Oversized type, warm paper and a single vermilion accent.'};
+  const focusLayouts=['takeover','headliner','sidekick'];
+  const isMiku=layout=>['vinyl','sticker',...focusLayouts].includes(layout);
   const text=(x,y,value,size,fill,extra='')=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="${size}" fill="${fill}" ${extra}>${value}</text>`;
   function colour(hex,intensity) {
     return '#'+hex.slice(1).match(/../g).map(pair=>Math.round(parseInt(pair,16)*intensity).toString(16).padStart(2,'0')).join('');
@@ -34,7 +35,37 @@ globalThis.WatchStudies = (() => {
       const angle=t.second*Math.PI/30-Math.PI/2;
       return `<circle cx="${225+Math.cos(angle)*r}" cy="${225+Math.sin(angle)*r}" r="4" fill="${fill}"/>`;
     };
-    if(layout==='vinyl') {
+    if(focusLayouts.includes(layout)) {
+      const pink=accent('#f34d8b'),teal=accent('#15baa6');
+      bg=ambient?'#000':night?'#092b2b':layout==='takeover'?'#f9edda':layout==='headliner'?'#c8eee1':'#f5dce4';
+      if(!ambient) {
+        defs+=`<pattern id="focus-print-${id}" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.45" fill="${night?'#6bc6b6':'#216658'}"/></pattern>`;
+        if(layout==='takeover') content+=`<path d="M0 270 450 239V450H0Z" fill="${night?'#173c36':'#a9e2d0'}"/><circle cx="225" cy="161" r="157" fill="${night?'#224c44':'#f3acc5'}"/>`;
+        if(layout==='headliner') content+=`<path d="M0 0H450V182L0 160Z" fill="${night?'#153e38':'#f6eddb'}"/><path d="M0 285 450 258V450H0Z" fill="${night?'#173936':'#edb1c7'}"/>`;
+        if(layout==='sidekick') content+=`<path d="M142 0 121 450H0V0Z" fill="${night?'#1e4e45':'#f6eddb'}"/><circle cx="278" cy="206" r="150" fill="${night?'#153f3c':'#9de1ce'}"/>`;
+        content+=`<rect width="450" height="450" fill="url(#focus-print-${id})" opacity="${state.texture/100}"/>`;
+      }
+      content+=secondDot(211,'#f34d8b');
+      const frame=layout==='takeover'?[18,-58,414,225,150]:layout==='headliner'?[18,80,414,225,287]:[104,24,357,284,225];
+      if(!ambient||state.aod>0) {
+        const [x,y,size,cx,cy]=frame;
+        const scale=ambient?1:state.art/100;
+        content+=`<g data-focus-art="${layout}" transform="translate(${cx} ${cy}) scale(${scale}) translate(${-cx} ${-cy})"><image ${ambient?'data-ambient-art="true"':''} href="assets/miku-reference-head-hires-v2.png" x="${x}" y="${y}" width="${size}" height="${size}" filter="${ambient?`url(#aod-${id})`:'none'}"/></g>`;
+      }
+      const timeInk=ambient?ink:night?'#f9f0dc':'#143d35';
+      const timeStyle=`font-family="Comic,Barlow,sans-serif" font-weight="900" font-style="italic" textLength="${layout==='headliner'?312:318}" lengthAdjust="spacingAndGlyphs"`;
+      if(layout==='takeover') {
+        content+=text(225,373,`${t.hour}:${t.minute}`,116,timeInk,timeStyle);
+        if(state.format==='12') content+=text(225,407,t.period,12,ambient?muted:night?'#abcab9':'#447b65','letter-spacing="3"');
+      } else if(layout==='headliner') {
+        content+=text(225,151,`${t.hour}:${t.minute}`,112,timeInk,timeStyle);
+        if(state.format==='12') content+=text(225,61,t.period,12,ambient?muted:night?'#abcab9':'#447b65','letter-spacing="3"');
+      } else {
+        content+=`<g transform="translate(118 225) rotate(-90)">${text(0,0,`${t.hour}:${t.minute}`,91,timeInk,'font-family="Comic,Barlow,sans-serif" font-weight="900" font-style="italic" textLength="258" lengthAdjust="spacingAndGlyphs"')}</g>`;
+        content+=text(283,348,'MIKU',35,teal,'font-family="Comic" font-weight="900" font-style="italic" letter-spacing="2"');
+        if(state.format==='12') content+=text(283,375,t.period,12,ambient?muted:night?'#abcab9':'#447b65','letter-spacing="3"');
+      }
+    } else if(layout==='vinyl') {
       bg=ambient?'#000':night?'#091815':'#112f28';
       const teal=accent('#28cfbc'),pink=accent('#f04e8a');
       content+=text(225,76,'MIKU / VINYL CLUB',15,teal,'letter-spacing="2" font-weight="700"');
