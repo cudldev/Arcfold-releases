@@ -1,14 +1,13 @@
 /* Proposed finish. Current keeps the taller, regular-weight code28 direction. */
-:root{--depth:8;--depth-amount:.6667}
 .comparison-control{margin-top:22px}.comparison-control .control-heading{margin-bottom:11px}
 .app-label{font-weight:400}.result-name{font-weight:400}
 .mascot img{left:0;top:0;width:100%;height:auto;clip-path:none;filter:none}
 .mascot{height:25cqw}
-.icon-stage{position:relative;display:block;flex-shrink:0;width:11.5cqw;height:11.5cqw;perspective:280px;transform-style:preserve-3d}
-.app-card .icon-stage img{display:block;width:100%;height:100%;transform:none;transition:transform 140ms ease-out,box-shadow 140ms ease-out}
-.icon-stage:before{content:'';position:absolute;inset:2%;border-radius:50%;opacity:0;background:var(--paper);border:1px solid #fffef8;pointer-events:none}
-.paper-edge{display:none;position:absolute;top:calc(var(--depth) * .18px);left:50%;width:var(--card-width);height:100%;transform:translateX(-50%);clip-path:polygon(11% 0,100% 0,100% 89%,89% 100%,0 100%,0 11%);background:#165d5260;z-index:-2;pointer-events:none;opacity:var(--depth-amount)}
-.is-refined .paper-edge{display:block}.is-list .paper-edge{width:calc(100% - (100% - var(--card-width)) * .7);clip-path:polygon(2cqw 0,100% 0,100% calc(100% - 2cqw),calc(100% - 2cqw) 100%,0 100%,0 2cqw)}
+.app-grid{isolation:isolate}
+.app-slot{position:relative;min-width:0;display:flex;align-items:stretch}
+.app-slot>.app-card{width:100%;transform-origin:50% 50%;backface-visibility:hidden}
+.app-card:hover>img{transform:none}
+.app-slot>.app-card:active{filter:brightness(.99)}
 .search-field{box-shadow:inset 0 0 0 2px #236f63}.search-field:focus-within{outline:2px solid #236f63;outline-offset:-2px}
 
 /* The slab belongs to the whole Library canvas and reaches the top/status edge. */
@@ -22,15 +21,9 @@
 .is-refined .collection select{padding-top:1.9cqw;padding-bottom:1.9cqw;font-size:3.7cqw}
 .is-refined .search-field{box-shadow:none;outline:none}
 .is-refined .search-field:focus-within{outline:1px solid #186f60;outline-offset:-1px}
-.is-refined .app-card .icon-stage:before{opacity:1;transform:rotateX(calc(16deg * var(--depth-amount))) rotateY(calc(-10deg * var(--depth-amount)));box-shadow:0 calc(var(--depth) * .28px) calc(var(--depth) * .45px) rgb(9 57 48 / .14)}
-.is-refined .app-card .icon-stage img{transform:translateZ(calc(var(--depth) * 1px)) translateY(calc(var(--depth) * -.24px)) rotateX(calc(var(--tilt-x,7deg) * var(--depth-amount))) rotateY(calc(var(--tilt-y,-7deg) * var(--depth-amount))) scale(calc(1 + var(--depth) * .002));box-shadow:0 calc(var(--depth) * .15px) calc(var(--depth) * .4px) rgb(5 44 39 / .16)}
-.is-refined .app-card.is-pressing .icon-stage img{transform:translateZ(calc(var(--depth) * .4px)) translateY(1px) rotateX(2deg) rotateY(-2deg);box-shadow:0 1px 1px rgb(5 44 39 / .12)}
 .is-refined .app-card[aria-pressed=true]:after{height:.65cqw;bottom:.5cqw}
-.is-list .icon-stage{width:11.5cqw;height:11.5cqw}
 .is-refined .is-list .app-card{min-height:16cqw;height:auto;flex-direction:row;gap:4cqw;padding:2cqw 5cqw}
 .is-refined .is-list .app-label{font-weight:400}
-.is-refined .is-list .app-card .icon-stage img{transform:translateZ(calc(var(--depth) * .6px)) translateY(calc(var(--depth) * -.16px)) rotateX(calc(5deg * var(--depth-amount))) rotateY(calc(-5deg * var(--depth-amount)))}
-.open-canvas .icon-stage{width:7.4cqw;height:7.4cqw}
 .open-canvas .mascot img{width:100%;height:auto}
 .open-canvas.is-refined .library-surface .scene-print:before{height:25cqw}
 .open-canvas.is-refined .app-card{min-height:13.3cqw;padding-top:1.7cqw;padding-bottom:1.2cqw;gap:.9cqw}
@@ -45,7 +38,7 @@
   .sliders label:nth-of-type(1){grid-row:2;grid-column:1}.sliders #card-width{grid-row:3;grid-column:1}
   .sliders label:nth-of-type(2){grid-row:2;grid-column:2}.sliders #dot-strength{grid-row:3;grid-column:2}
   .sliders label:nth-of-type(3){grid-row:4;grid-column:1}.sliders #gradient{grid-row:5;grid-column:1}
-  .sliders label:nth-of-type(4){grid-row:4;grid-column:2}.sliders #icon-depth{grid-row:5;grid-column:2}
+  .sliders label:nth-of-type(4){grid-row:4;grid-column:2}.sliders #scroll-depth{grid-row:5;grid-column:2}
   .sliders label{margin-top:17px;font-size:11px}.sliders .reset{grid-column:1/-1;grid-row:6;justify-self:end;width:150px}
 }
-@media(prefers-reduced-motion:reduce){.icon-stage img{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.app-slot>.app-card{transform:none!important}}
