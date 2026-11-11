@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const defaults = {layout:'comic',character:'reference',palette:'paper',mode:'active',art:100,texture:25,details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
+  const defaults = {layout:'comic',character:'reference',palette:'paper',mode:'active',art:100,texture:25,aod:35,details:true,seconds:true,size:'44',format:'24',live:false,bare:false};
   const choices = {layout:['comic','portrait','dial'],character:['original','reference'],palette:['paper','night'],mode:['active','ambient'],size:['40','44'],format:['12','24']};
   const names = {comic:'Comic',portrait:'Portrait',dial:'Backstage'};
   const captions = {comic:'The Comic clock, with Miku’s playful sticker expression.',portrait:'An oversized time header. Miku takes the lower stage.',dial:'A classic dial with a tiny backstage guest.'};
@@ -10,7 +10,7 @@
     const result = {...defaults};
     for (const [key, values] of Object.entries(choices)) if(values.includes(input[key])) result[key] = input[key];
     if(input.character==='simple') result.character='reference';
-    for(const key of ['art','texture']) {
+    for(const key of ['art','texture','aod']) {
       const value = Number(input[key]);
       if(input[key] !== undefined && Number.isFinite(value)) result[key] = Math.min(key==='art'?125:60, Math.max(key==='art'?75:0, value));
     }
@@ -38,6 +38,15 @@
   function artImage(file,x,y,width,height,anchorX,anchorY) {
     const scale = state.art / 100;
     return `<g transform="translate(${anchorX} ${anchorY}) scale(${scale}) translate(${-anchorX} ${-anchorY})"><image href="assets/${file}.png" x="${x}" y="${y}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet"/></g>`;
+  }
+  function ambientArtwork(layout,id) {
+    if(state.aod===0) return '';
+    const [x,y,size] = layout==='comic'?[240,175,160]:layout==='portrait'?[130,195,190]:[240,245,135];
+    return `<image data-ambient-art="true" href="assets/miku-reference-head-hires-v2.png" x="${x}" y="${y}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid meet" filter="url(#aod-${id})"/>`;
+  }
+  function ambientFilter(id) {
+    const matrix=[.64,1,.88].flatMap(tint=>[.2126,.7152,.0722].map(luma=>(luma*tint*state.aod/100).toFixed(5)).concat([0,0])).concat([0,0,0,1,0]);
+    return `<filter id="aod-${id}" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="${matrix.join(' ')}"/></filter>`;
   }
   function slots(layout,ink,muted,interactive) {
     const attr = interactive ? 'class="face-slot" role="button" tabindex="0"' : '';
@@ -69,14 +78,14 @@
       if(!ambient) {
         content+=state.character==='reference'?artImage('miku-reference-head-hires-v2',180,92,280,280,320,232):artImage('miku',201,144,252,200,327,244);
         content+=`<path d="M303 145 l12 -13 m-2 20 17 -4" fill="none" stroke="${pink}" stroke-width="4" stroke-linecap="round"/>`;
-      } else content+=text(302,279,'01',42,teal,`${timeFont} text-anchor="middle"`);
+      } else content+=state.aod>0?ambientArtwork(layout,id):text(302,279,'01',42,teal,`${timeFont} text-anchor="middle"`);
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
     } else if(layout==='portrait') {
       content+=text(225,96,`${t.day} ${t.date} ${t.month}`,15,muted,'text-anchor="middle" font-weight="700" letter-spacing="2"');
       content+=text(225,196,`${t.hour}:${t.minute}`,108,ink,`${timeFont} text-anchor="middle" textLength="318" lengthAdjust="spacingAndGlyphs"`);
       if(state.format==='12') content+=text(225,221,t.period,13,muted,'text-anchor="middle"');
       if(!ambient) content+=artImage(state.character==='reference'?'miku-reference-head-hires-v2':'miku',71,209,331,221,237,318);
-      else content+=text(225,318,'MIKU / 01',19,teal,'text-anchor="middle" letter-spacing="3"');
+      else content+=state.aod>0?ambientArtwork(layout,id):text(225,318,'MIKU / 01',19,teal,'text-anchor="middle" letter-spacing="3"');
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
     } else {
       if(ambient) content+=Array.from({length:4},(_,i)=>`<line x1="225" y1="25" x2="225" y2="38" stroke="${muted}" stroke-width="2" transform="rotate(${i*90} 225 225)"/>`).join('');
@@ -87,12 +96,13 @@
       content+=text(225,401,'6',13,muted,'text-anchor="middle" font-weight="700"');
       content+=text(46,230,'9',13,muted,'text-anchor="middle" font-weight="700"');
       if(!ambient) content+=artImage(state.character==='reference'?'miku-reference-head-hires-v2':'miku-head',237,253,133,110,304,308);
+      else content+=ambientArtwork(layout,id);
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
       content+=`<line x1="225" y1="238" x2="225" y2="117" stroke="${ink}" stroke-width="12" stroke-linecap="round" transform="rotate(${(t.hour24%12)*30+t.min/2} 225 225)"/><line x1="225" y1="245" x2="225" y2="65" stroke="${teal}" stroke-width="7" stroke-linecap="round" transform="rotate(${t.min*6} 225 225)"/>`;
       if(state.seconds&&!ambient) content+=`<line x1="225" y1="253" x2="225" y2="49" stroke="${pink}" stroke-width="2.5" transform="rotate(${t.second*6} 225 225)"/>`;
       content+=`<circle cx="225" cy="225" r="8" fill="${pink}"/><circle cx="225" cy="225" r="3" fill="${bg}"/>`;
     }
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" role="${interactive?'group':'img'}" aria-label="${names[layout]} ${ambient?'always-on':'active'} face, ${t.hour}:${t.minute}" style="font-family:Barlow,Arial,sans-serif"><defs><clipPath id="clip-${id}"><circle cx="225" cy="225" r="225"/></clipPath><pattern id="dots-${id}" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.25" fill="${teal}"/></pattern></defs><g clip-path="url(#clip-${id})"><circle cx="225" cy="225" r="225" fill="${bg}"/>${content}</g></svg>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 450" role="${interactive?'group':'img'}" aria-label="${names[layout]} ${ambient?'always-on':'active'} face, ${t.hour}:${t.minute}" style="font-family:Barlow,Arial,sans-serif"><defs><clipPath id="clip-${id}"><circle cx="225" cy="225" r="225"/></clipPath><pattern id="dots-${id}" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.25" fill="${teal}"/></pattern>${ambient&&state.aod>0?ambientFilter(id):''}</defs><g clip-path="url(#clip-${id})"><circle cx="225" cy="225" r="225" fill="${bg}"/>${content}</g></svg>`;
   }
   function updateFaces() {
     // Preserve focused information slots while the optional live clock updates.
@@ -104,16 +114,17 @@
   }
   function render(persist=true) {
     for(const type of ['layout','character','palette','mode']) for(const button of document.querySelectorAll(`[data-${type}]`)) button.setAttribute('aria-pressed',String(button.dataset[type]===state[type]));
-    for(const key of ['art','texture','size','format']) $(key).value=state[key];
+    for(const key of ['art','texture','aod','size','format']) $(key).value=state[key];
     for(const key of ['details','seconds','live']) $(key).checked=state[key];
     $('art-value').value=state.art+'%'; $('texture-value').value=state.texture+'%';
+    $('aod-value').value=state.aod===0?'Off':state.aod+'%';
     $('watch').classList.toggle('small',state.size==='40');
     $('watch').classList.toggle('bare',state.bare);
     $('bare').setAttribute('aria-pressed',String(state.bare));
     $('bare').textContent=state.bare?'Show watch case ↙':'Hide watch case ↗';
     $('stage-label').textContent=`${names[state.layout].toUpperCase()} / ${state.mode==='active'?'ACTIVE':'ALWAYS-ON'}`;
     $('case-label').textContent=`${state.size} MM / ILLUSTRATIVE CASE`;
-    $('stage-caption').textContent=state.mode==='ambient'?'Time stays. Illustration and texture rest.':captions[state.layout];
+    $('stage-caption').textContent=state.mode==='ambient'?(state.aod>0?'A quiet teal Miku stays with the clock.':'Time stays. Miku is resting.'):captions[state.layout];
     // Texture/artwork settings remain adjustable for the active face while comparing ambient.
     updateFaces();
     if(persist) {try{localStorage.setItem(storageKey,JSON.stringify(state));}catch{}}
@@ -124,7 +135,7 @@
   }
   function change(key,value) { state=sanitize({...state,[key]:value});render(); }
   for(const key of ['layout','character','palette','mode']) document.querySelectorAll(`[data-${key}]`).forEach(button=>button.addEventListener('click',()=>change(key,button.dataset[key])));
-  for(const key of ['art','texture']) $(key).addEventListener('input',event=>change(key,event.target.value));
+  for(const key of ['art','texture','aod']) $(key).addEventListener('input',event=>change(key,event.target.value));
   for(const key of ['size','format']) $(key).addEventListener('change',event=>change(key,event.target.value));
   for(const key of ['details','seconds','live']) $(key).addEventListener('change',event=>change(key,event.target.checked));
   $('bare').addEventListener('click',()=>change('bare',!state.bare));

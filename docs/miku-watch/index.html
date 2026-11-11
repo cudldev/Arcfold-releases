@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#eeeee7">
   <meta name="description" content="An interactive Miku watch face design study. Explore three directions, tune the finish, and compare active and always-on views.">
   <title>Miku / Watch face study</title>
-  <link rel="stylesheet" href="preview.css?v=ponytails4">
-  <script src="preview.js?v=ponytails4" defer></script>
+  <link rel="stylesheet" href="preview.css?v=alwayson5">
+  <script src="preview.js?v=alwayson5" defer></script>
 </head>
 <body>
   <header class="masthead"><a class="wordmark" href="#">MIKU<span class="mark">01</span><span class="wordmark-sub">ON YOUR WRIST.</span></a><span class="edition">WATCH FACE STUDY / 001</span></header>
@@ -35,6 +35,7 @@
           <div class="control-row"><span id="palette-label">Paper & ink</span><div class="segmented" role="group" aria-labelledby="palette-label"><button data-palette="paper" aria-pressed="true">Paper</button><button data-palette="night" aria-pressed="false">Night</button></div></div>
           <label class="slider-label" for="art">Miku size <output id="art-value" for="art">100%</output></label><input id="art" type="range" min="75" max="125" value="100" step="1">
           <label class="slider-label" for="texture">Comic texture <output id="texture-value" for="texture">25%</output></label><input id="texture" type="range" min="0" max="60" value="25" step="1">
+          <label class="slider-label" for="aod">Always-on Miku glow <output id="aod-value" for="aod">35%</output></label><input id="aod" type="range" min="0" max="60" value="35" step="1" aria-description="Preview intensity of the teal Miku head in always-on. Zero hides it. This does not set physical watch brightness.">
           <label class="toggle-row" for="details"><span>Information slots<small>Sample battery + steps</small></span><input id="details" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
           <label class="toggle-row" for="seconds"><span>Second indicator<small>A small pink accent</small></span><input id="seconds" type="checkbox" checked><span class="toggle" aria-hidden="true"></span></label>
         </section>
@@ -47,7 +48,7 @@
         <p class="control-note">Your choices stay in this browser. The copied link includes your design.</p>
       </aside>
     </div>
-    <section class="afterword"><div><span class="eyebrow">DESIGNED FOR A GLANCE</span><h2>Personality awake.<br>Just the essentials at rest.</h2><p>Always-on drops the illustration and texture, keeping a simple clock and a trace of teal. Switch views above to compare.</p></div><div class="ambient-card"><div id="ambient-face" class="ambient-face" aria-label="Always-on comparison"></div><span>ALWAYS-ON / DESIGN INTENT</span></div></section>
+    <section class="afterword"><div><span class="eyebrow">DESIGNED FOR A GLANCE</span><h2>Personality awake.<br>A little Miku after hours.</h2><p>A small, dim teal Miku stays beside the clock in always-on. Tune Miku glow above, or slide to zero for time alone. The preview intensity is separate from the watch’s actual display brightness.</p></div><div class="ambient-card"><div id="ambient-face" class="ambient-face" aria-label="Always-on comparison"></div><span>ALWAYS-ON / DESIGN INTENT</span></div></section>
     <footer><span>MIKU / WATCH STUDY 001</span><p>Browser concept · sample data · no watch connection.<br>Native layout, battery use and always-on behaviour still need device testing.</p><a href="assets/NOTICE.txt">Artwork & font credits ↗</a></footer>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
