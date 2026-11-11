@@ -1,9 +1,10 @@
 /* Standalone watch face studies. All information is illustrative sample data. */
 globalThis.WatchStudies = (() => {
-  const names={takeover:'Miku Takeover',headliner:'Miku Headliner',sidekick:'Miku Sidekick',vinyl:'Miku Vinyl',sticker:'Miku Sticker',arc:'Arc',instrument:'Instrument',paper:'Paper'};
+  const names={closeup:'Miku Close-up',takeover:'Miku Takeover',headliner:'Miku Headliner',sidekick:'Miku Sidekick',vinyl:'Miku Vinyl',sticker:'Miku Sticker',arc:'Arc',instrument:'Instrument',paper:'Paper'};
   const captions={takeover:'Miku takes the stage. The time gets a bold headline below.',headliner:'Big time at the top. A full-size character underneath.',sidekick:'A sideways time column and a larger-than-life Miku.',vinyl:'A tiny record label, a favourite face, and a big digital clock.',sticker:'A Miku sticker and a crooked time ticket. A little more pop.',arc:'Quiet typography and a sweep of colour across the horizon.',instrument:'A precise field dial, warm markers and useful little details.',paper:'Oversized type, warm paper and a single vermilion accent.'};
   const focusLayouts=['takeover','headliner','sidekick'];
-  const isMiku=layout=>['vinyl','sticker',...focusLayouts].includes(layout);
+  captions.closeup='Her face fills the dial. The clock sits gently across the fringe.';
+  const isMiku=layout=>['closeup','vinyl','sticker',...focusLayouts].includes(layout);
   const text=(x,y,value,size,fill,extra='')=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="${size}" fill="${fill}" ${extra}>${value}</text>`;
   function colour(hex,intensity) {
     return '#'+hex.slice(1).match(/../g).map(pair=>Math.round(parseInt(pair,16)*intensity).toString(16).padStart(2,'0')).join('');
@@ -35,7 +36,14 @@ globalThis.WatchStudies = (() => {
       const angle=t.second*Math.PI/30-Math.PI/2;
       return `<circle cx="${225+Math.cos(angle)*r}" cy="${225+Math.sin(angle)*r}" r="4" fill="${fill}"/>`;
     };
-    if(focusLayouts.includes(layout)) {
+    if(layout==='closeup') {
+      bg=ambient?'#000':'#78adbd';
+      if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/soft-chibi-full-face-v1.png" x="0" y="0" width="450" height="450" preserveAspectRatio="xMidYMid slice" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;
+      const clockInk=ambient?'#f0f0e7':night?'#c4ffed':'#fff6ee';
+      content+=text(225,100,`${t.hour}:${t.minute}`,76,clockInk,'font-weight="700" textLength="252" lengthAdjust="spacingAndGlyphs" paint-order="stroke" stroke="#192751" stroke-width="5" stroke-linejoin="round"');
+      content+=text(225,127,`${t.day} ${t.date}${state.format==='12'?' · '+t.period:''}`,14,clockInk,'font-weight="700" letter-spacing="1.5" paint-order="stroke" stroke="#192751" stroke-width="3"');
+      content+=secondDot(208,'#192751');
+    } else if(focusLayouts.includes(layout)) {
       const pink=accent('#f34d8b'),teal=accent('#15baa6');
       bg=ambient?'#000':night?'#092b2b':layout==='takeover'?'#f9edda':layout==='headliner'?'#c8eee1':'#f5dce4';
       if(!ambient) {
