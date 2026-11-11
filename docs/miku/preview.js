@@ -35,6 +35,7 @@ const apps = [
 const state = {collection:'all', sort:'az', layout:'grid', keyboard:true, shifted:false, symbols:false, selected:'', refined:true};
 let toastTimer;
 let depthFrame=0;
+let catalogKeyboardNavigation=false;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 function requestCatalogDepth() {
   if (depthFrame) return;
@@ -46,20 +47,50 @@ function requestCatalogDepth() {
     const viewportWidth=viewport.clientWidth;
     if (!viewportHeight) return;
     const middleY=bounds.top+viewport.clientTop+viewportHeight/2;
-    const middleX=bounds.left+viewport.clientLeft+viewportWidth/2;
     const strength=state.refined&&!reducedMotion.matches?Number($('#scroll-depth').value)/100:0;
     const perspective=Math.max(480,Math.min(1100,viewportWidth*1.65));
+    const grid=$('#app-grid');
+    // Reserve the approach inside each column so enlarged buttons never cover a neighbour.
+    const fit=strength?.96*(1-.22*strength):1;
+    if(Math.abs((parseFloat(grid.style.getPropertyValue('--catalog-fit'))||0)-fit)>.0001){
+      grid.style.setProperty('--catalog-fit',String(fit));
+      requestCatalogDepth();
+      return;
+    }
     // Read every untransformed slot before writing any of its card transforms.
-    const geometry=[...$('#app-grid').children].map(slot=>({slot,bounds:slot.getBoundingClientRect()}));
+    const geometry=[...grid.children].map(slot=>({slot,bounds:slot.getBoundingClientRect(),width:slot.firstElementChild.offsetWidth}));
+    // End rows can reach the closest point too, rather than stopping at the rim.
+    const endSpace=strength&&geometry.length?Math.max(0,(viewportHeight-geometry[0].bounds.height)/2):0;
+    const padding=`${endSpace.toFixed(2)}px`;
+    if(Math.abs((parseFloat(grid.style.paddingBlock)||0)-endSpace)>.01){
+      grid.style.paddingBlock=padding;
+      requestCatalogDepth();
+      return;
+    }
+    const radius=viewportHeight*.56/Math.max(.001,1.15*strength);
     for(const item of geometry){
       const rect=item.bounds;
       const distanceY=rect.top+rect.height/2-middleY;
-      const distanceX=rect.left+rect.width/2-middleX;
-      const t=Math.max(-1.25,Math.min(1.25,distanceY/(viewportHeight*.55)));
-      const z=(36-185*t*t)*strength;
+      const angle=Math.max(-1.42,Math.min(1.42,distanceY/radius));
+      // Tilted corners stay inside their own cell, including full-width List rows.
+      const widthLimit=perspective*Math.max(0,1-item.width/(rect.width*.98));
+      const front=Math.min(perspective*.22*strength,widthLimit);
+      const cornerDepth=rect.height/2*Math.abs(Math.sin(angle));
+      const z=Math.min(front-radius*(1-Math.cos(angle)),widthLimit-cornerDepth);
       const scale=perspective/(perspective-z);
+      const cornerScales=[perspective/(perspective-z-cornerDepth),perspective/(perspective-z+cornerDepth)];
+      const halfSlot=rect.width*.49;
+      const minX=Math.max(...cornerScales.map(value=>-halfSlot/value+item.width/2));
+      const maxX=Math.min(...cornerScales.map(value=>halfSlot/value-item.width/2));
+      const x=Math.max(minX,Math.min(maxX,0));
+      const y=radius*Math.sin(angle);
+      const fade=Math.max(0,Math.min(1,(Math.abs(angle)-.48)/.88));
+      const opacity=strength?1-fade*fade*(3-2*fade):1;
       const card=item.slot.firstElementChild;
-      card.style.transform=strength?`perspective(${perspective}px) translate3d(${(distanceX*(scale-1)/scale).toFixed(2)}px,${(distanceY*(scale-1)/scale).toFixed(2)}px,${z.toFixed(2)}px) rotateX(${(-24*t*strength).toFixed(2)}deg)`:'none';
+      // Cylindrical tangent: tilt follows the surface normal at this scroll position.
+      card.style.transform=strength?`perspective(${perspective}px) translate3d(${x.toFixed(2)}px,${(y-distanceY/scale).toFixed(2)}px,${z.toFixed(2)}px) rotateX(${(-angle*180/Math.PI).toFixed(2)}deg)`:'none';
+      card.style.opacity=opacity.toFixed(3);
+      card.style.pointerEvents=opacity>.08?'auto':'none';
       item.slot.style.zIndex=String(Math.round(1000+z));
     }
   });
@@ -157,9 +188,19 @@ $('#keyboard').addEventListener('pointerdown',event=>event.preventDefault());
 $('#cover-mode').addEventListener('click',()=>setCanvas(false));$('#open-mode').addEventListener('click',()=>setCanvas(true));
 ['#card-width','#dot-strength','#gradient','#scroll-depth'].forEach(selector=>$(selector).addEventListener('input',updateFinish));
 $('#current-design').addEventListener('click',()=>setDesign(false));$('#refined-design').addEventListener('click',()=>setDesign(true));
-$('#reset').addEventListener('click',()=>{$('#card-width').value=82;$('#dot-strength').value=14;$('#gradient').value=1;$('#scroll-depth').value=75;setDesign(true);updateFinish();setCanvas(false);state.collection='all';state.sort='az';state.selected='';state.shifted=false;state.symbols=false;$('#shift').setAttribute('aria-pressed','false');$('#symbols').setAttribute('aria-pressed','false');$('#symbols').textContent='?123';populateKeys();$('#collection').value='all';$('#sort').value='az';setLayout('grid');$('#query').value='Orbit';renderSearch();$('.library-scroll').scrollTop=0;setKeyboard(true);$('#view-menu').hidden=true;$('#view-menu-button').setAttribute('aria-expanded','false');toast('Study reset');});
+$('#reset').addEventListener('click',()=>{$('#card-width').value=82;$('#dot-strength').value=14;$('#gradient').value=5;$('#scroll-depth').value=110;setDesign(true);updateFinish();setCanvas(false);state.collection='all';state.sort='az';state.selected='';state.shifted=false;state.symbols=false;$('#shift').setAttribute('aria-pressed','false');$('#symbols').setAttribute('aria-pressed','false');$('#symbols').textContent='?123';populateKeys();$('#collection').value='all';$('#sort').value='az';setLayout('grid');$('#query').value='Orbit';renderSearch();$('.library-scroll').scrollTop=0;setKeyboard(true);$('#view-menu').hidden=true;$('#view-menu-button').setAttribute('aria-expanded','false');toast('Study reset');});
 document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;if(!$('#view-menu').hidden){$('#view-menu').hidden=true;$('#view-menu-button').setAttribute('aria-expanded','false');$('#view-menu-button').focus();}else if(state.keyboard){setKeyboard(false);$('#query').blur();}else{$('#open-search').focus({preventScroll:true});}});
 $('.library-scroll').addEventListener('scroll',requestCatalogDepth,{passive:true});
+$('#app-grid').addEventListener('focusin',event=>{
+  if(catalogKeyboardNavigation&&event.target.matches('.app-card:focus-visible')&&state.refined&&!reducedMotion.matches&&Number($('#scroll-depth').value)>0){
+    const viewport=$('.library-scroll');
+    const slot=event.target.parentElement.getBoundingClientRect();
+    const bounds=viewport.getBoundingClientRect();
+    viewport.scrollTop+=slot.top+slot.height/2-(bounds.top+viewport.clientTop+viewport.clientHeight/2);
+  }
+});
+document.addEventListener('keydown',event=>{if(event.key==='Tab')catalogKeyboardNavigation=true;},true);
+document.addEventListener('pointerdown',()=>{catalogKeyboardNavigation=false;},true);
 window.addEventListener('resize',requestCatalogDepth,{passive:true});
 reducedMotion.addEventListener('change',requestCatalogDepth);
 if('ResizeObserver' in window){const observer=new ResizeObserver(requestCatalogDepth);observer.observe($('.library-scroll'));observer.observe($('#app-grid'));}
