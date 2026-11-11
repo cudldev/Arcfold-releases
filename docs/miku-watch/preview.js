@@ -67,7 +67,7 @@
       content+=text(61,306,t.minute,147,ambient?ink:teal,`${timeFont} textLength="167" lengthAdjust="spacingAndGlyphs"`);
       if(state.format==='12') content+=text(62,104,t.period,13,muted,'font-weight="700"');
       if(!ambient) {
-        content+=state.character==='reference'?artImage('miku-reference-head-hires-v1',211,119,232,232,327,235):artImage('miku',201,144,252,200,327,244);
+        content+=state.character==='reference'?artImage('miku-reference-head-hires-v2',180,92,280,280,320,232):artImage('miku',201,144,252,200,327,244);
         content+=`<path d="M303 145 l12 -13 m-2 20 17 -4" fill="none" stroke="${pink}" stroke-width="4" stroke-linecap="round"/>`;
       } else content+=text(302,279,'01',42,teal,`${timeFont} text-anchor="middle"`);
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
@@ -75,7 +75,7 @@
       content+=text(225,96,`${t.day} ${t.date} ${t.month}`,15,muted,'text-anchor="middle" font-weight="700" letter-spacing="2"');
       content+=text(225,196,`${t.hour}:${t.minute}`,108,ink,`${timeFont} text-anchor="middle" textLength="318" lengthAdjust="spacingAndGlyphs"`);
       if(state.format==='12') content+=text(225,221,t.period,13,muted,'text-anchor="middle"');
-      if(!ambient) content+=artImage(state.character==='reference'?'miku-reference-head-hires-v1':'miku',71,209,331,221,237,318);
+      if(!ambient) content+=artImage(state.character==='reference'?'miku-reference-head-hires-v2':'miku',71,209,331,221,237,318);
       else content+=text(225,318,'MIKU / 01',19,teal,'text-anchor="middle" letter-spacing="3"');
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
     } else {
@@ -86,7 +86,7 @@
       content+=text(403,230,'3',13,muted,'text-anchor="middle" font-weight="700"');
       content+=text(225,401,'6',13,muted,'text-anchor="middle" font-weight="700"');
       content+=text(46,230,'9',13,muted,'text-anchor="middle" font-weight="700"');
-      if(!ambient) content+=artImage(state.character==='reference'?'miku-reference-head-hires-v1':'miku-head',237,253,133,110,304,308);
+      if(!ambient) content+=artImage(state.character==='reference'?'miku-reference-head-hires-v2':'miku-head',237,253,133,110,304,308);
       if(state.details&&!ambient) content+=slots(layout,ink,muted,interactive);
       content+=`<line x1="225" y1="238" x2="225" y2="117" stroke="${ink}" stroke-width="12" stroke-linecap="round" transform="rotate(${(t.hour24%12)*30+t.min/2} 225 225)"/><line x1="225" y1="245" x2="225" y2="65" stroke="${teal}" stroke-width="7" stroke-linecap="round" transform="rotate(${t.min*6} 225 225)"/>`;
       if(state.seconds&&!ambient) content+=`<line x1="225" y1="253" x2="225" y2="49" stroke="${pink}" stroke-width="2.5" transform="rotate(${t.second*6} 225 225)"/>`;
