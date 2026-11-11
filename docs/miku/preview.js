@@ -42,18 +42,20 @@ function requestCatalogDepth() {
     depthFrame=0;
     const viewport=$('.library-scroll');
     const bounds=viewport.getBoundingClientRect();
-    if (!viewport.clientHeight) return;
-    const middleY=bounds.top+viewport.clientTop+viewport.clientHeight/2;
-    const middleX=bounds.left+viewport.clientLeft+viewport.clientWidth/2;
+    const viewportHeight=viewport.clientHeight;
+    const viewportWidth=viewport.clientWidth;
+    if (!viewportHeight) return;
+    const middleY=bounds.top+viewport.clientTop+viewportHeight/2;
+    const middleX=bounds.left+viewport.clientLeft+viewportWidth/2;
     const strength=state.refined&&!reducedMotion.matches?Number($('#scroll-depth').value)/100:0;
-    const perspective=Math.max(480,Math.min(1100,viewport.clientWidth*1.65));
+    const perspective=Math.max(480,Math.min(1100,viewportWidth*1.65));
     // Read every untransformed slot before writing any of its card transforms.
     const geometry=[...$('#app-grid').children].map(slot=>({slot,bounds:slot.getBoundingClientRect()}));
     for(const item of geometry){
       const rect=item.bounds;
       const distanceY=rect.top+rect.height/2-middleY;
       const distanceX=rect.left+rect.width/2-middleX;
-      const t=Math.max(-1.25,Math.min(1.25,distanceY/(viewport.clientHeight*.55)));
+      const t=Math.max(-1.25,Math.min(1.25,distanceY/(viewportHeight*.55)));
       const z=(36-185*t*t)*strength;
       const scale=perspective/(perspective-z);
       const card=item.slot.firstElementChild;

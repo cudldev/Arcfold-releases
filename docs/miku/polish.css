@@ -4,8 +4,8 @@
 .mascot img{left:0;top:0;width:100%;height:auto;clip-path:none;filter:none}
 .mascot{height:25cqw}
 .app-grid{isolation:isolate}
-.app-slot{position:relative;min-width:0;display:flex;align-items:stretch}
-.app-slot>.app-card{width:100%;transform-origin:50% 50%;backface-visibility:hidden}
+.app-slot{position:relative;min-width:0;display:flex;align-items:stretch;pointer-events:none}
+.app-slot>.app-card{width:100%;transform-origin:50% 50%;backface-visibility:hidden;pointer-events:auto}
 .app-card:hover>img{transform:none}
 .app-slot>.app-card:active{filter:brightness(.99)}
 .search-field{box-shadow:inset 0 0 0 2px #236f63}.search-field:focus-within{outline:2px solid #236f63;outline-offset:-2px}
