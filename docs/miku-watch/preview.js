@@ -135,6 +135,7 @@
     const focus=['closeup','takeover','headliner','sidekick'].includes(state.layout);
     $('character-controls').hidden=!miku||focus;
     $('info-controls').hidden=focus;
+    $('palette-controls').hidden=state.layout==='closeup';
     for(const id of ['art-controls','texture-controls']) $(id).hidden=!miku;
     if(state.layout==='closeup') for(const id of ['art-controls','texture-controls']) $(id).hidden=true;
     $('preview-stage').dataset.family=miku?'miku':state.layout;

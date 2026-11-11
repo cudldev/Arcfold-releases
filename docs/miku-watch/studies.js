@@ -39,8 +39,9 @@ globalThis.WatchStudies = (() => {
     if(layout==='closeup') {
       bg=ambient?'#000':'#78adbd';
       if(!ambient||state.aod>0) content+=`<image ${ambient?'data-ambient-art="true"':''} href="assets/soft-chibi-full-face-v1.png" x="0" y="0" width="450" height="450" preserveAspectRatio="xMidYMid slice" filter="${ambient?`url(#aod-${id})`:'none'}"/>`;
-      const clockInk=ambient?'#f0f0e7':night?'#c4ffed':'#fff6ee';
-      content+=text(225,100,`${t.hour}:${t.minute}`,76,clockInk,'font-weight="700" textLength="252" lengthAdjust="spacingAndGlyphs" paint-order="stroke" stroke="#192751" stroke-width="5" stroke-linejoin="round"');
+      const clockInk='#75b5ca';
+      defs+=`<path id="closeup-time-${id}" d="M65 225 A160 160 0 0 1 385 225"/>`;
+      content+=`<text font-size="64" font-weight="700" text-anchor="middle" fill="${clockInk}" paint-order="stroke" stroke="#192751" stroke-width="5" stroke-linejoin="round"><textPath href="#closeup-time-${id}" startOffset="50%" textLength="220" lengthAdjust="spacingAndGlyphs">${t.hour}:${t.minute}</textPath></text>`;
       content+=text(225,127,`${t.day} ${t.date}${state.format==='12'?' · '+t.period:''}`,14,clockInk,'font-weight="700" letter-spacing="1.5" paint-order="stroke" stroke="#192751" stroke-width="3"');
       content+=secondDot(208,'#192751');
     } else if(focusLayouts.includes(layout)) {
