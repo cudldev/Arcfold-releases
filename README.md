@@ -4,11 +4,11 @@ An Android launcher with a clean, gesture-based Home screen.
 
 ## Current development preview
 
-**[Download Arcfold 0.5.22-miku7 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.22-miku7/arcfold-dev.apk)**
+**[Download Arcfold 0.5.22-miku7 APK](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.23-miku8/arcfold-dev.apk)**
 
-Version code 30 · **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
+Version code 31 · **Arcfold Dev** · Android 12/API31 or newer · Owner testing target: Galaxy Z Fold 6
 
-[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.22-miku7) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold6 checklist](TESTING.md)
+[Release notes and checksums](https://github.com/cudldev/Arcfold-releases/releases/tag/v0.5.23-miku8) · [All releases](https://github.com/cudldev/Arcfold-releases/releases) · [Fold6 checklist](TESTING.md)
 
 Update the existing Arcfold Dev install to retain your saved layout. You can try Home before choosing it as the default launcher. GitHub's source ZIP contains these download pages; application source/history remain private.
 
@@ -17,20 +17,20 @@ Update the existing Arcfold Dev install to retain your saved layout. You can try
 
 ## Miku improvements
 
-- Visible Library icons load during held scrolling.
-- Catalog rendering caches the static comic backdrop and reduces redundant offscreen buffers while retaining depth, edge fade and touch behavior.
-- The still wallpaper and 5% catalog shading remain.
+- A stationary hold on a Library app opens its contextual menu.
+- Moving after a short hold starts the existing drag.
+- Miku Home remains active after rotating to landscape.
+- Existing visible icon loading, comic backdrop, depth, edge fade and still wallpaper remain.
 
 Choose **Customize → Appearance → Theme → Miku · Halo**. Hold empty Home space to edit; swipe up for Library and down for Search. To restore your previous launcher, use **Customize → Choose default launcher**.
 
-[Library preview](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.22-miku7/miku-library.png) · [Search preview](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.22-miku7/miku-search.png) · [Open Library preview](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.22-miku7/miku-open.png)
+[Library preview](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.23-miku8/miku-library.png) · [Search preview](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.23-miku8/miku-search.png) · [Open Library preview](https://github.com/cudldev/Arcfold-releases/releases/download/v0.5.23-miku8/miku-open.png)
 
 Home retains the perspective comic fan and Circle spinner, floating Barlow labels, circular installed-app icons, foreground character, saved scene controls and full safe-area footer. Library offers List/Grid, sorting, an alphabet rail and editable collections. Collections filter Library only. Android profile boundaries remain separate. Widget hosting, external theme packs and experimental device/live-wallpaper mode remain deferred.
 
 ## Tested scope
 
-The exact code30 APK passed check/debug/test assembly and 35 unique app +12 platform API37 methods, with no skips and all recorded emulator baselines restored. Cover/open and synthetic fold frames were inspected. Small-window fixtures are fit checks, not physical inset qualification. Physical Fold6 performance, appearance and folding, earlier Android runtime and wider gates remain open.
-
+The exact code31 APK passed check and debug/test assembly. Seven Miku catalog tests and one landscape persistence test passed on a disposable API37 emulator. The stationary hold test confirmed the menu appears before release. The catalog screenshots show unchanged appearance. Physical Fold6, Android API31–32 runtime and wider qualification remain open.
 On 2026-11-09 the owner reported that a permission change resolved the earlier Play Protect block; the exact permission/version were unspecified. This remains owner feedback, separate from independent Google classification.
 
 ## Updates and licensing
